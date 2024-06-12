@@ -1,0 +1,1 @@
+ C:\\Users\\TOTAL\ TECH\\Desktop\\projects\\Day\ 4\ -\ Taskb\\martapp\\.dart_tool\\flutter_build\\2ae2d3408e6f93a6975b0df13bfb2734\\native_assets.yaml: 

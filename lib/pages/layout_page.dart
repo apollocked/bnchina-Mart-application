@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:bnchinamart/pages/Navigation_Bar_Pages/account_page.dart';
-import 'package:bnchinamart/pages/basket/basket_page.dart';
+import 'package:bnchinamart/pages/Basket_Page/basket_page.dart';
 import 'package:bnchinamart/pages/Navigation_Bar_Pages/home_page.dart';
 import 'package:bnchinamart/utils/assets.dart';
 import 'package:bnchinamart/utils/colors.dart';
