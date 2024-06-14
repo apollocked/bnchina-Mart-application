@@ -41,7 +41,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-  
+bnchina-Mart-application/
+
 .metadata
   README.md
         analysis_options.yaml
