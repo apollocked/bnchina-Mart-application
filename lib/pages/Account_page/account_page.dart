@@ -1,4 +1,4 @@
-
+import 'package:apollo/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
 import 'package:apollo/pages/Authotication/register_page.dart';
 import 'package:apollo/utils/assets.dart';
 import 'package:apollo/utils/colors.dart';
@@ -6,7 +6,6 @@ import 'package:apollo/utils/data.dart';
 import 'package:apollo/widgits/Custom_Widget/custom_list_tile.dart';
 import 'package:apollo/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
-
 
 class Accountpage extends StatelessWidget {
   const Accountpage({super.key});
@@ -46,18 +45,20 @@ class Accountpage extends StatelessWidget {
               color: primaryColor,
             ),
             ontap: () {
-              CustomSnackbar(errorColor,context, "we still are working on it");
+              CustomSnackbar(errorColor, context, "we still are working on it");
             }),
         CustomTile(
-          testname: "Change password",
-          icon: Icon(
-            Icons.password_sharp,
-            color: primaryColor,
-          ),
-          ontap: () {
-            CustomSnackbar(errorColor,context, "we still are working on it");
-          },
-        ),
+            testname: "Change password",
+            icon: Icon(
+              Icons.password_sharp,
+              color: primaryColor,
+            ),
+            ontap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
+                return const ChangePasswordPage();
+              }));
+            }),
         CustomTile(
           testname: "Notfications",
           icon: Icon(
@@ -65,7 +66,7 @@ class Accountpage extends StatelessWidget {
             color: primaryColor,
           ),
           ontap: () {
-            CustomSnackbar(errorColor,context, "we still are working on it");
+            CustomSnackbar(errorColor, context, "we still are working on it");
           },
         ),
         CustomTile(
@@ -75,7 +76,7 @@ class Accountpage extends StatelessWidget {
               color: primaryColor,
             ),
             ontap: () {
-              CustomSnackbar(errorColor,context, "we still are working on it");
+              CustomSnackbar(errorColor, context, "we still are working on it");
             }),
         CustomTile(
             testname: "Signout",

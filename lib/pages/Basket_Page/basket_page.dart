@@ -1,4 +1,3 @@
-
 import 'package:apollo/pages/Basket_Page/basket_cart.dart';
 import 'package:apollo/utils/colors.dart';
 import 'package:apollo/utils/data.dart';
@@ -95,7 +94,8 @@ class _BasketPageState extends State<BasketPage> {
                 onPressed: () {
                   setState(() {
                     basketItems = [];
-                    CustomSnackbar(textColor,context, "Thaks for your purches");
+                    CustomSnackbar(
+                        textColor, context, "Thaks for your purches");
                   });
                 },
                 style: ElevatedButton.styleFrom(

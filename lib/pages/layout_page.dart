@@ -1,5 +1,3 @@
-
-
 import 'package:apollo/pages/Basket_Page/basket_page.dart';
 import 'package:apollo/pages/Account_page/account_page.dart';
 import 'package:apollo/pages/Home_page/home_page.dart';
@@ -29,7 +27,8 @@ class _LayoutPageState extends State<LayoutPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: customAppBar(),
-      body: Padding(padding: const EdgeInsets.all(10), child: pages[slectedpage]),
+      body:
+          Padding(padding: const EdgeInsets.all(10), child: pages[slectedpage]),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: slectedpage,
         backgroundColor: backgroundColor,

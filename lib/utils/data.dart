@@ -1,4 +1,8 @@
-Map<String, dynamic> currentUser = {};
+Map<String, dynamic> currentUser = {
+  "username": "apollo",
+  "email": "apollo@",
+  "password": "aaaaaaaa",
+};
 
 List<Map<String, dynamic>> accounts = [
   {
