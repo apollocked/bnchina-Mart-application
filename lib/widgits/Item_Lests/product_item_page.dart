@@ -85,7 +85,7 @@ class ProductItem extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 basketItems.add(product);
-                CustomSnackbar(context, "added to your basket");
+                CustomSnackbar(primaryColor,context, "added to your basket");
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

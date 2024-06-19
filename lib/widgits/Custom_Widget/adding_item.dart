@@ -1,4 +1,5 @@
 
+import 'package:apollo/utils/colors.dart';
 import 'package:apollo/utils/data.dart';
 import 'package:apollo/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
@@ -30,5 +31,5 @@ void addToBasket(BuildContext context, Map<String, dynamic> product) {
     });
   }
 
-  CustomSnackbar(context, "Added to Basket");
+  CustomSnackbar(primaryColor, context, "Added to Basket");
 }

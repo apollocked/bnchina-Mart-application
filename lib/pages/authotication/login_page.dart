@@ -1,4 +1,4 @@
-import 'package:apollo/pages/authotication/register_page.dart';
+import 'package:apollo/pages/Authotication/register_page.dart';
 import 'package:apollo/pages/layout_page.dart';
 import 'package:apollo/utils/assets.dart';
 import 'package:apollo/utils/colors.dart';

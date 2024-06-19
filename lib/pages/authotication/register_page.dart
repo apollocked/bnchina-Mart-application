@@ -1,5 +1,5 @@
 
-import 'package:apollo/pages/authotication/login_page.dart';
+import 'package:apollo/pages/Authotication/login_page.dart';
 import 'package:apollo/utils/assets.dart';
 import 'package:apollo/utils/colors.dart';
 import 'package:apollo/utils/data.dart';

@@ -1,8 +1,8 @@
 
 
-import 'package:apollo/pages/Navigation_Bar_Pages/Basket_Page/basket_page.dart';
-import 'package:apollo/pages/Navigation_Bar_Pages/account_page.dart';
-import 'package:apollo/pages/Navigation_Bar_Pages/home_page.dart';
+import 'package:apollo/pages/Basket_Page/basket_page.dart';
+import 'package:apollo/pages/Account_page/account_page.dart';
+import 'package:apollo/pages/Home_page/home_page.dart';
 import 'package:apollo/utils/assets.dart';
 import 'package:apollo/utils/colors.dart';
 import 'package:apollo/widgits/Custom_Widget/custom_appbar.dart';
