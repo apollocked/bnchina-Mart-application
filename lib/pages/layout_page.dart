@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use, duplicate_ignore
+
 import 'package:MiniMart/pages/Basket_Page/basket_page.dart';
 import 'package:MiniMart/pages/Account_page/account_page.dart';
 import 'package:MiniMart/pages/Home_page/home_page.dart';

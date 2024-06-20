@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:MiniMart/pages/layout_page.dart';
 import 'package:MiniMart/utils/assets.dart';
 import 'package:MiniMart/utils/colors.dart';

@@ -77,6 +77,7 @@ class Accountpage extends StatelessWidget {
           ),
           ontap: () {
             showModalBottomSheet(
+                isScrollControlled: true,
                 backgroundColor: backgroundColor,
                 context: context,
                 builder: (context) {

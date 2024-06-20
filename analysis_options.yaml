@@ -13,6 +13,7 @@ analyzer:
     duplicate_ignore: ignore
     file_names: ignore
     no_logic_in_create_state: ignore
+    non_constant_identifier_names: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:
