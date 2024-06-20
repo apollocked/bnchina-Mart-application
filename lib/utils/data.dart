@@ -2,8 +2,31 @@ Map<String, dynamic> currentUser = {
   "username": "apollo",
   "email": "apollo@",
   "password": "aaaaaaaa",
+  "discount": 0,
 };
 
+List<Map<String, dynamic>> coubons = [
+  {
+    "code": "2314",
+    "discount": 20,
+  },
+  {
+    "code": "2114",
+    "discount": 30,
+  },
+  {
+    "code": "1114",
+    "discount": 100,
+  },
+  {
+    "code": "2333",
+    "discount": 5,
+  },
+  {
+    "code": "2364",
+    "discount": 25,
+  },
+];
 List<Map<String, dynamic>> accounts = [
   {
     "username": "apollo",

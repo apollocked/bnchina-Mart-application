@@ -47,7 +47,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       }
     }
     if (currentUser["password"] == againpassword) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+      Navigator.pop(context, MaterialPageRoute(builder: (context) {
         return const LayoutPage();
       }));
     }

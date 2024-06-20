@@ -34,7 +34,10 @@ class DiscountPage extends StatelessWidget {
               height: 15,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  // the design 
+
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: primaryColor,
                     shape: RoundedRectangleBorder(
