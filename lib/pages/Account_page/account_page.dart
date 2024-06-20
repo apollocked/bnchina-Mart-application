@@ -70,18 +70,20 @@ class Accountpage extends StatelessWidget {
           },
         ),
         CustomTile(
-            testname: "Discount",
-            icon: Icon(
-              Icons.local_offer,
-              color: primaryColor,
-            ),
-            ontap: () {
-              showModalBottomSheet(
-              context: context,
-              builder: (context) {
-                return const DiscountPage();});
-              },
-            ),
+          testname: "Discount",
+          icon: Icon(
+            Icons.local_offer,
+            color: primaryColor,
+          ),
+          ontap: () {
+            showModalBottomSheet(
+                backgroundColor: backgroundColor,
+                context: context,
+                builder: (context) {
+                  return const DiscountPage();
+                });
+          },
+        ),
         CustomTile(
             testname: "Signout",
             icon: Icon(

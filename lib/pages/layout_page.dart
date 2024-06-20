@@ -62,7 +62,7 @@ class _LayoutPageState extends State<LayoutPage> {
           const BottomNavigationBarItem(
               icon: CircleAvatar(
                 maxRadius: 15,
-                backgroundImage: AssetImage("assets/avatar-boy.jpg"),
+                backgroundImage: AssetImage(avatarBoy),
               ),
               label: "account")
         ],
