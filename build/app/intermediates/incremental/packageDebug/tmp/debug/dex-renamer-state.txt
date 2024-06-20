@@ -1,4 +1,4 @@
-#Wed Jun 19 18:53:46 AST 2024
+#Thu Jun 20 21:59:01 AST 2024
 base.0=C\:\\Users\\TOTAL TECH\\Desktop\\New folder\\bnchina-Mart-application\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\TOTAL TECH\\Desktop\\New folder\\bnchina-Mart-application\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=C\:\\Users\\TOTAL TECH\\Desktop\\New folder\\bnchina-Mart-application\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\1\\classes.dex

@@ -1,5 +1,5 @@
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/utils/data.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/utils/data.dart';
 import 'package:flutter/material.dart';
 
 class BasketCard extends StatefulWidget {

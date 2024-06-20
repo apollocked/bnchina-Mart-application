@@ -1,4 +1,4 @@
-import 'package:apollo/utils/colors.dart';
+import 'package:MiniMart/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 // ignore: non_constant_identifier_names

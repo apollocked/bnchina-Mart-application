@@ -1,8 +1,8 @@
 
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_appbar.dart';
-import 'package:apollo/widgits/Item_Lests/category_page.dart';
-import 'package:apollo/widgits/categorycard/category_text.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:MiniMart/widgits/Item_Lests/category_page.dart';
+import 'package:MiniMart/widgits/categorycard/category_text.dart';
 import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {

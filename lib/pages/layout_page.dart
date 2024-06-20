@@ -1,9 +1,9 @@
-import 'package:apollo/pages/Basket_Page/basket_page.dart';
-import 'package:apollo/pages/Account_page/account_page.dart';
-import 'package:apollo/pages/Home_page/home_page.dart';
-import 'package:apollo/utils/assets.dart';
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:MiniMart/pages/Basket_Page/basket_page.dart';
+import 'package:MiniMart/pages/Account_page/account_page.dart';
+import 'package:MiniMart/pages/Home_page/home_page.dart';
+import 'package:MiniMart/utils/assets.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

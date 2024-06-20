@@ -1,11 +1,11 @@
-import 'package:apollo/pages/Onclick_Pages/categories_page.dart';
-import 'package:apollo/utils/assets.dart';
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/utils/data.dart';
-import 'package:apollo/widgits/Item_Lests/product_item_page.dart';
-import 'package:apollo/widgits/Item_Lests/product_vertical_list.dart';
-import 'package:apollo/widgits/Item_Lests/tranding_now_list.dart';
-import 'package:apollo/widgits/categorycard/categorycardlist.dart';
+import 'package:MiniMart/pages/Onclick_Pages/categories_page.dart';
+import 'package:MiniMart/utils/assets.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/utils/data.dart';
+import 'package:MiniMart/widgits/Item_Lests/product_item_page.dart';
+import 'package:MiniMart/widgits/Item_Lests/product_vertical_list.dart';
+import 'package:MiniMart/widgits/Item_Lests/tranding_now_list.dart';
+import 'package:MiniMart/widgits/categorycard/categorycardlist.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

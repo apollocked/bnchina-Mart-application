@@ -1,8 +1,8 @@
 
 
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/widgits/Custom_Widget/adding_item.dart';
-import 'package:apollo/widgits/Item_Lests/product_item_page.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/widgits/Custom_Widget/adding_item.dart';
+import 'package:MiniMart/widgits/Item_Lests/product_item_page.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

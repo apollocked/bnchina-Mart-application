@@ -1,7 +1,5 @@
-
-
-import 'package:apollo/utils/data.dart';
-import 'package:apollo/widgits/categorycard/categorycarditem.dart';
+import 'package:MiniMart/utils/data.dart';
+import 'package:MiniMart/widgits/categorycard/categorycarditem.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatefulWidget {

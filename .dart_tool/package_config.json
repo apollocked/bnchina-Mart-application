@@ -242,13 +242,13 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "apollo",
+      "name": "MiniMart",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-06-19T15:24:38.442580Z",
+  "generated": "2024-06-20T18:59:28.941825Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/crs/flutter",

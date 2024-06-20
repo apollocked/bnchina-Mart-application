@@ -1,10 +1,10 @@
-import 'package:apollo/pages/Authotication/register_page.dart';
-import 'package:apollo/pages/layout_page.dart';
-import 'package:apollo/utils/assets.dart';
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/utils/data.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_banner.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_textfeild.dart';
+import 'package:MiniMart/pages/Authotication/register_page.dart';
+import 'package:MiniMart/pages/layout_page.dart';
+import 'package:MiniMart/utils/assets.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/utils/data.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_banner.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_textfeild.dart';
 
 import 'package:flutter/material.dart';
 

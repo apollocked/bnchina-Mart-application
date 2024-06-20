@@ -1,9 +1,9 @@
 
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/utils/data.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_appbar.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_snackBar.dart';
-import 'package:apollo/widgits/categorycard/category_text.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/utils/data.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
+import 'package:MiniMart/widgits/categorycard/category_text.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

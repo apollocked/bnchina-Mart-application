@@ -1,9 +1,9 @@
-import 'package:apollo/pages/Authotication/login_page.dart';
-import 'package:apollo/utils/assets.dart';
-import 'package:apollo/utils/colors.dart';
-import 'package:apollo/utils/data.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_banner.dart';
-import 'package:apollo/widgits/Custom_Widget/custom_textfeild.dart';
+import 'package:MiniMart/pages/Authotication/login_page.dart';
+import 'package:MiniMart/utils/assets.dart';
+import 'package:MiniMart/utils/colors.dart';
+import 'package:MiniMart/utils/data.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_banner.dart';
+import 'package:MiniMart/widgits/Custom_Widget/custom_textfeild.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

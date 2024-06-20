@@ -15,6 +15,11 @@ const String mango = "${imagePath}mango.png";
 const String potato = "${imagePath}potato.png";
 const String poster = "${imagePath}poster.png";
 
+// bounes task
+const String key = "${imagePath}key.png";
+const String coupon = "${imagePath}coupon.png";
+const String receipt = "${imagePath}receipt.png";
+
 // Icons
 const String usernameIcon = "${iconPath}username.png";
 const String emailIcon = "${iconPath}mail.png";

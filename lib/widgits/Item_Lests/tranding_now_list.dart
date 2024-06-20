@@ -1,6 +1,6 @@
 
-import 'package:apollo/utils/data.dart';
-import 'package:apollo/widgits/Item_Lests/trending_product_cart.dart';
+import 'package:MiniMart/utils/data.dart';
+import 'package:MiniMart/widgits/Item_Lests/trending_product_cart.dart';
 import 'package:flutter/material.dart';
 
 class TreandigList extends StatefulWidget {
