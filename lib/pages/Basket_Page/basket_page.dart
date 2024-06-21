@@ -94,6 +94,7 @@ class _BasketPageState extends State<BasketPage> {
                 onPressed: () {
                   setState(() {
                     basketItems = [];
+                    currentUser["discount"] = 0;
                     CustomSnackbar(
                         textColor, context, "Thaks for your purches");
                   });
@@ -120,21 +121,48 @@ class _BasketPageState extends State<BasketPage> {
                 fontFamily: 'popins',
                 color: primaryColor)),
         Text.rich(
-          TextSpan(children: [
-            TextSpan(
-              text: addtototal().toString(),
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'popins',
-                  color: textColor),
-            ),
-            TextSpan(
-              text: " IQD",
-              style: TextStyle(
-                  fontSize: 15, fontFamily: 'popins', color: primaryColor),
-            )
-          ]),
+          currentUser["discount"] != 0
+              ? TextSpan(children: [
+                  TextSpan(
+                    text: (addtototal()! *
+                            ((100 - currentUser["discount"]) / 100))
+                        .toString(),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'popins',
+                        color: textColor),
+                  ),
+                  TextSpan(
+                    text: " IQD",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'popins',
+                        color: primaryColor),
+                  ),
+                  TextSpan(
+                    text: " after % ${currentUser["discount"]} discount",
+                    style: TextStyle(
+                        fontSize: 15, fontFamily: 'popins', color: textColor),
+                  )
+                ])
+              : TextSpan(children: [
+                  TextSpan(
+                    text: addtototal().toString(),
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'popins',
+                        color: textColor),
+                  ),
+                  TextSpan(
+                    text: " IQD",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'popins',
+                        color: primaryColor),
+                  )
+                ]),
         ),
       ],
     );
