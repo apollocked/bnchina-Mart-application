@@ -26,12 +26,8 @@ class _BasketPageState extends State<BasketPage> {
                       return BasketCard(
                         product: basketItems[index],
                         onMinus: () {
+                          setState(() {});
                           setState(() {
-                            if (basketItems[index]["quantity"] == 0) {
-                              // ignore: collection_methods_unrelated_type
-                              basketItems.removeAt(index);
-                            }
-
                             if (basketItems[index]["quantity"] != 0) {
                               basketItems[index]["quantity"] =
                                   basketItems[index]["quantity"] - 1;
@@ -40,8 +36,14 @@ class _BasketPageState extends State<BasketPage> {
                                       basketItems[index]["price"];
                               if (addtototal() == 0) {
                                 basketItems = [];
+                                return;
                               }
                             }
+                            setState(() {
+                              if (basketItems[index]["quantity"] == 0) {
+                                basketItems.removeAt(index);
+                              }
+                            });
                           });
                         },
                         onplus: () {
