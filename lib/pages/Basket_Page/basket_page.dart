@@ -2,6 +2,7 @@ import 'package:MiniMart/pages/Basket_Page/basket_cart.dart';
 import 'package:MiniMart/utils/colors.dart';
 import 'package:MiniMart/utils/data.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
+import 'package:MiniMart/widgits/Custom_Widget/total_price_finctions.dart';
 import 'package:flutter/material.dart';
 
 class BasketPage extends StatefulWidget {
@@ -12,19 +13,6 @@ class BasketPage extends StatefulWidget {
 }
 
 class _BasketPageState extends State<BasketPage> {
-  double? addtototal() {
-    double x = 0;
-    if (basketItems.isEmpty) {
-      return x;
-    }
-
-    for (var i = 0; i < basketItems.length; i++) {
-      x += basketItems[i]["totalPrice"];
-    }
-
-    return x;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -124,9 +112,7 @@ class _BasketPageState extends State<BasketPage> {
           currentUser["discount"] != 0
               ? TextSpan(children: [
                   TextSpan(
-                    text: (addtototal()! *
-                            ((100 - currentUser["discount"]) / 100))
-                        .toString(),
+                    text: discount().toString(),
                     style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
