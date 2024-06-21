@@ -1,5 +1,3 @@
-
-
 import 'package:MiniMart/utils/colors.dart';
 import 'package:MiniMart/widgits/Custom_Widget/adding_item.dart';
 import 'package:MiniMart/widgits/Item_Lests/product_item_page.dart';
@@ -20,13 +18,13 @@ class ProductCard extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 5),
-        height: 80,
+        height: 70,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 140,
-              width: 140,
+              width: 150,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
                   color: darkGreyColor),
@@ -72,7 +70,7 @@ class ProductCard extends StatelessWidget {
                   text: "${product["price"]}",
                   style: TextStyle(
                       color: textColor,
-                      fontSize: 16,
+                      fontSize: 12,
                       fontWeight: FontWeight.w900),
                 ),
                 TextSpan(children: [
@@ -80,7 +78,7 @@ class ProductCard extends StatelessWidget {
                     text: " IQD",
                     style: TextStyle(
                         color: darkGreyColor,
-                        fontSize: 16,
+                        fontSize: 12,
                         fontWeight: FontWeight.w900),
                   ),
                 ]),

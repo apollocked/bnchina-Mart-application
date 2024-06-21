@@ -1,7 +1,6 @@
-
 import 'package:MiniMart/utils/colors.dart';
 import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Item_Lests/trending_product_cart.dart';
+import 'package:MiniMart/widgits/categorycard/trending_product_cart.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -43,7 +42,7 @@ class _ProductListState extends State<ProductList> {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             childAspectRatio: 2 / 2,
-            mainAxisSpacing: 10,
+            mainAxisSpacing: 12,
             crossAxisSpacing: 1),
         itemBuilder: (context, index) {
           return ProductCard(

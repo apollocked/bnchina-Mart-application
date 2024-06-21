@@ -1,4 +1,3 @@
-
 import 'package:MiniMart/utils/colors.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:MiniMart/widgits/Item_Lests/category_page.dart';
@@ -21,7 +20,7 @@ class ProductPage extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: CategoryText(category: category)),
               const SizedBox(
-                height: 10,
+                height: 15,
               ),
               ProductList(
                 category: category,

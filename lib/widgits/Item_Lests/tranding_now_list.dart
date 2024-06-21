@@ -1,6 +1,6 @@
 
 import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Item_Lests/trending_product_cart.dart';
+import 'package:MiniMart/widgits/categorycard/trending_product_cart.dart';
 import 'package:flutter/material.dart';
 
 class TreandigList extends StatefulWidget {
