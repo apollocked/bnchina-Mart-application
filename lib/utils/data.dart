@@ -16,7 +16,7 @@ List<Map<String, dynamic>> coubons = [
   },
   {
     "code": "1114",
-    "discount": 25,
+    "discount": 50,
   },
   {
     "code": "2333",

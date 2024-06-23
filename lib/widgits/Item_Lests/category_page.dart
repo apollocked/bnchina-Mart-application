@@ -34,22 +34,19 @@ class _ProductListState extends State<ProductList> {
         ),
       );
     }
-    return Align(
-      alignment: Alignment.center,
-      child: GridView.builder(
-        itemCount: fliteredProduct.length,
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 2 / 2,
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 1),
-        itemBuilder: (context, index) {
-          return ProductCard(
-            product: fliteredProduct[index],
-          );
-        },
-      ),
+    return GridView.builder(
+      itemCount: fliteredProduct.length,
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 1 / 1,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 5),
+      itemBuilder: (context, index) {
+        return ProductCard(
+          product: fliteredProduct[index],
+        );
+      },
     );
   }
 }

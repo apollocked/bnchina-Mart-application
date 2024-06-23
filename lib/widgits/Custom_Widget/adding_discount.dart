@@ -8,8 +8,8 @@ void AddingDiscount(String value, context) async {
     if (value == element["code"]) {
       currentUser["discount"] = element["discount"];
 
-      CustomSnackbar(
-          primaryColor, context, "Enjoy your % ${currentUser["discount"]}");
+      CustomSnackbar(primaryColor, context,
+          "Enjoy your % ${currentUser["discount"]} Discount");
       break;
     } else {
       CustomSnackbar(

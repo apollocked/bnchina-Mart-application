@@ -15,6 +15,7 @@ class ProductPage extends StatelessWidget {
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Align(
                   alignment: Alignment.topLeft,

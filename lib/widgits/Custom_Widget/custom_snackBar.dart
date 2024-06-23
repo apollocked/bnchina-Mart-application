@@ -12,6 +12,8 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> CustomSnackbar(
           child: Text(
         massege,
         style: TextStyle(
-            fontSize: 15, color: color == primaryColor ? inblack : textColor),
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+            color: color == primaryColor ? inblack : textColor),
       ))));
 }
