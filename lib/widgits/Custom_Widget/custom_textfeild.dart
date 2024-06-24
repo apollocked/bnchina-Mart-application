@@ -17,12 +17,22 @@ class CustomField extends StatelessWidget {
     return TextFormField(
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
-            fillColor: whiteColor,
-            filled: true,
-            border: const OutlineInputBorder(borderSide: BorderSide.none),
-            hintText: name,
-            hintStyle: TextStyle(color: darkGreyColor),
-            suffixIcon: Image.asset(path)),
+          fillColor: whiteColor,
+          filled: true,
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: BorderSide(color: primaryColor, width: 1)),
+          hintText: name,
+          hintStyle: TextStyle(color: darkGreyColor),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide:
+                  BorderSide(color: primaryColor, width: 1, strokeAlign: 8)),
+          suffixIcon: Image.asset(
+            path,
+            color: primaryColor,
+          ),
+        ),
         onSaved: onsave,
         validator: onvalidad);
   }

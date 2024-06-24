@@ -50,7 +50,7 @@ class ProductCard extends StatelessWidget {
                         shape: const CircleBorder(),
                         child: Icon(
                           Icons.add,
-                          color: darkGreyColor,
+                          color: inblack,
                         ),
                       ))
                 ],
