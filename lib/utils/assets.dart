@@ -27,3 +27,9 @@ const String passwordIcon = "${iconPath}lock.png";
 const String homeIcon = "${iconPath}home.svg";
 const String basketIcon = "${iconPath}basket.svg";
 const String locatinIcon = "${iconPath}location.svg";
+
+const String shoppingCart = "${iconPath}shopping-cart.svg";
+const String lockIcon = "${iconPath}lock.svg";
+const String notificationIcon = "${iconPath}bell.svg";
+const String starIcon = "${iconPath}star.svg";
+const String signoutIcon = "${iconPath}log-out.svg";

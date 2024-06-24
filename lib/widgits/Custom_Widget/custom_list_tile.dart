@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 class CustomTile extends StatelessWidget {
   const CustomTile(
       {super.key,
-      required this.testname,
+      required this.text,
       required this.icon,
       required this.ontap});
 
   final Widget icon;
   final VoidCallback ontap;
-  final String testname;
+  final String text;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +24,7 @@ class CustomTile extends StatelessWidget {
         leading: icon,
         focusColor: inblack,
         title: Text(
-          testname,
+          text,
           style: TextStyle(color: textColor),
         ),
         onTap: () {

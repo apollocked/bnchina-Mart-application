@@ -7,6 +7,7 @@ import 'package:MiniMart/utils/data.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_list_tile.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Accountpage extends StatelessWidget {
   const Accountpage({super.key});
@@ -40,16 +41,16 @@ class Accountpage extends StatelessWidget {
           ),
         ),
         CustomTile(
-            testname: "Orders",
-            icon: Icon(
-              Icons.airplane_ticket_rounded,
+            text: "Orders",
+            icon: SvgPicture.asset(
+              basketIcon,
               color: primaryColor,
             ),
             ontap: () {
               CustomSnackbar(errorColor, context, "we still are working on it");
             }),
         CustomTile(
-            testname: "Change password",
+            text: "Change password",
             icon: Icon(
               Icons.password_sharp,
               color: primaryColor,
@@ -60,9 +61,9 @@ class Accountpage extends StatelessWidget {
               }));
             }),
         CustomTile(
-          testname: "Notfications",
-          icon: Icon(
-            Icons.notifications,
+          text: "Notfications",
+          icon: SvgPicture.asset(
+            notificationIcon,
             color: primaryColor,
           ),
           ontap: () {
@@ -70,11 +71,8 @@ class Accountpage extends StatelessWidget {
           },
         ),
         CustomTile(
-          testname: "Discount",
-          icon: Icon(
-            Icons.local_offer,
-            color: primaryColor,
-          ),
+          text: "Coupons",
+          icon: SvgPicture.asset(starIcon, color: primaryColor),
           ontap: () {
             showModalBottomSheet(
                 isScrollControlled: true,
@@ -86,9 +84,9 @@ class Accountpage extends StatelessWidget {
           },
         ),
         CustomTile(
-            testname: "Signout",
-            icon: Icon(
-              Icons.exit_to_app,
+            text: "Signout",
+            icon: SvgPicture.asset(
+              signoutIcon,
               color: primaryColor,
             ),
             ontap: () {
