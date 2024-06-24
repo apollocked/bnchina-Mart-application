@@ -14,10 +14,26 @@ class OrdersPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            alignment: Alignment.topCenter,
-            height: 200,
-            child: Image.asset(receipt),
-          )
+              padding: const EdgeInsets.only(top: 15),
+              color: backgroundColor,
+              alignment: Alignment.center,
+              height: 180,
+              child: Stack(
+                alignment: const Alignment(0, 0),
+                children: [
+                  Image.asset(
+                    receipt,
+                    height: 120,
+                  ),
+                  Text(
+                    "Past Orders",
+                    style: TextStyle(
+                        color: textColor,
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600),
+                  )
+                ],
+              ))
         ],
       ),
     );

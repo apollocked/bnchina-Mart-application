@@ -4,6 +4,7 @@ Map<String, dynamic> currentUser = {
   "password": "aaaaaaaa",
   "discount": 0,
 };
+List<Map<String, dynamic>> orders = [];
 
 List<Map<String, dynamic>> coubons = [
   {
@@ -50,18 +51,7 @@ List<Map<String, dynamic>> accounts = [
   },
 ];
 
-List<Map<String, dynamic>> basketItems = [
-  // {
-  //   "name": null,
-  //   "imgPath": null,
-  //   "details": null,
-  //   "price":null,
-  //   "category": null,
-  //   "isTrending":null,
-  //   "quantity": null,
-  //   "totalPrice":0,
-  // },
-];
+List<Map<String, dynamic>> basketItems = [];
 
 List<Map<String, dynamic>> categories = [
   {

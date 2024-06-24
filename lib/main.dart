@@ -1,4 +1,3 @@
-import 'package:MiniMart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
 import 'package:MiniMart/pages/layout_page.dart';
 import 'package:MiniMart/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,6 @@ class BnchinaMartApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: backgroundColor),
           useMaterial3: true,
         ),
-        home: OrdersPage());
+        home: const LayoutPage());
   }
 }
