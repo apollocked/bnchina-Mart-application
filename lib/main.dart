@@ -20,6 +20,6 @@ class BnchinaMartApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: backgroundColor),
           useMaterial3: true,
         ),
-        home: OrdersPage());
+        home: LayoutPage());
   }
 }
