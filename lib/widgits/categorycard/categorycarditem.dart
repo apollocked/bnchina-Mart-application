@@ -18,10 +18,11 @@ class CategoryItem extends StatelessWidget {
         }));
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+        padding: const EdgeInsets.symmetric(vertical: 0.1, horizontal: 8),
         decoration: BoxDecoration(
             color: darkGreyColor, borderRadius: BorderRadius.circular(10)),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -38,9 +39,9 @@ class CategoryItem extends StatelessWidget {
                 if (categories["discount"] != 0)
                   Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                        const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(11),
                         color: primaryColor),
                     child: Row(
                       children: [
@@ -50,7 +51,7 @@ class CategoryItem extends StatelessWidget {
                         ),
                         Text(
                           "% discount",
-                          style: TextStyle(fontSize: 10, color: inblack),
+                          style: TextStyle(fontSize: 12, color: inblack),
                         ),
                       ],
                     ),
@@ -65,11 +66,14 @@ class CategoryItem extends StatelessWidget {
                   ))
               ],
             ),
+            const Spacer(
+              flex: 3,
+            ),
             Image.asset(
               categories["imgPath"],
               fit: BoxFit.contain,
-              height: 55,
-              width: 68,
+              height: 50,
+              width: 65,
             )
           ],
         ),
