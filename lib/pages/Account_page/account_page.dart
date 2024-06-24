@@ -1,5 +1,6 @@
 import 'package:MiniMart/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
 import 'package:MiniMart/pages/Account_page/Account_Page_Listtile_pages/discount_page.dart';
+import 'package:MiniMart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
 import 'package:MiniMart/pages/Authotication/register_page.dart';
 import 'package:MiniMart/utils/assets.dart';
 import 'package:MiniMart/utils/colors.dart';
@@ -47,7 +48,9 @@ class Accountpage extends StatelessWidget {
               color: primaryColor,
             ),
             ontap: () {
-              CustomSnackbar(errorColor, context, "we still are working on it");
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return OrdersPage();
+              }));
             }),
         CustomTile(
             text: "Change password",

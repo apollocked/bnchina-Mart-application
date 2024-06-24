@@ -4,6 +4,7 @@ import 'package:MiniMart/utils/data.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:MiniMart/widgits/Custom_Widget/total_price_finctions.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:shortid/shortid.dart';
 
 class BasketPage extends StatefulWidget {
@@ -87,15 +88,15 @@ class _BasketPageState extends State<BasketPage> {
                     orders.add({
                       "OrderID": shortid.generate(),
                       "data": basketItems,
-                      "date": DateTime.now(),
+                      "date": DateFormat.yMd().format(DateTime.now()),
                       "TotalPrice": currentUser["discount"] != 0
-                          ? discount()
-                          : addtototal(),
+                          ? discount().toString()
+                          : addtototal().toString(),
                     });
                     basketItems = [];
                     currentUser["discount"] = 0;
                     CustomSnackbar(
-                        textColor, context, "Thaks for your purches");
+                        primaryColor, context, "Thaks for your purches");
                   });
                 },
                 style: ElevatedButton.styleFrom(
@@ -112,7 +113,9 @@ class _BasketPageState extends State<BasketPage> {
                       fontWeight: FontWeight.bold),
                 ),
               )
-            : Container(),
+            : SizedBox(
+                height: 5,
+              ),
         Text("Total",
             style: TextStyle(
                 fontSize: 16,
