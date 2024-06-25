@@ -7,7 +7,7 @@ import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
 class OrdersPage extends StatefulWidget {
-  OrdersPage({super.key});
+  const OrdersPage({super.key});
 
   @override
   State<OrdersPage> createState() => _OrdersPageState();
