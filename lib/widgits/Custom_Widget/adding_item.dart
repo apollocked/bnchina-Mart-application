@@ -24,8 +24,8 @@ void addToBasket(BuildContext context, Map<String, dynamic> product) {
       "details": product["details"],
       "price": product["price"],
       "category": product["category"],
+      "quantity": product["quantity"],
       "isTrending": product["isTrending"],
-      "quantity": 1,
       "totalPrice": product["price"]
     });
   }

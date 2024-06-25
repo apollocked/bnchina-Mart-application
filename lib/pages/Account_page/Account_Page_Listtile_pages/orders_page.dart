@@ -1,20 +1,30 @@
+// ignore_for_file: avoid_print
+
 import 'package:MiniMart/utils/assets.dart';
 import 'package:MiniMart/utils/colors.dart';
 import 'package:MiniMart/utils/data.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:flutter/material.dart';
 
-class OrdersPage extends StatelessWidget {
+class OrdersPage extends StatefulWidget {
   OrdersPage({super.key});
 
   @override
+  State<OrdersPage> createState() => _OrdersPageState();
+}
+
+class _OrdersPageState extends State<OrdersPage> {
+  @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> v = [];
-    if (orders.isNotEmpty) {
-      for (var element in orders[0]["Data"]) {
-        v.add(element);
+    setState(() {
+      if (orders.isNotEmpty) {
+        for (var element in orders[0]["Data"]) {
+          v.add(element);
+        }
       }
-    }
+    });
+    print(v[1]["quantity"].toString());
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: customAppBar(),
@@ -62,12 +72,12 @@ class OrdersPage extends StatelessWidget {
                                       text: "order ID ",
                                       style: TextStyle(color: textColor)),
                                   TextSpan(
-                                      text: orders[0]["OrderID"].toString(),
+                                      text: orders[1]["OrderID"].toString(),
                                       style: TextStyle(color: blackColor)),
                                 ]))
                               ],
                             ),
-                            Text(orders[0]["Date"].toString())
+                            Text(orders[1]["Date"].toString())
                           ],
                         ),
                         SizedBox(
@@ -81,7 +91,7 @@ class OrdersPage extends StatelessWidget {
                             children: [
                               Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.amber,
+                                    color: backgroundColor,
                                     borderRadius: BorderRadius.circular(12)),
                                 width: 130,
                                 child: Column(
@@ -92,7 +102,7 @@ class OrdersPage extends StatelessWidget {
                                       flex: 1,
                                     ),
                                     Image.asset(
-                                      v[0]["imgPath"],
+                                      v[1]["imgPath"],
                                       height: 65,
                                       alignment: Alignment.center,
                                       fit: BoxFit.contain,
@@ -101,8 +111,31 @@ class OrdersPage extends StatelessWidget {
                                       flex: 1,
                                     ),
                                     Container(
+                                      padding: EdgeInsets.all(2),
                                       height: 50,
-                                      color: primaryColor,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                          color: orderpageColor,
+                                          borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(12),
+                                              bottomRight:
+                                                  Radius.circular(12))),
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                              child: Text.rich(
+                                            TextSpan(children: [
+                                              TextSpan(
+                                                  text: v[1]["name"],
+                                                  style:
+                                                      TextStyle(fontSize: 10)),
+                                              TextSpan(
+                                                  text:
+                                                      ".  ${v[1]["quantity"].toString()}"),
+                                            ]),
+                                          ))
+                                        ],
+                                      ),
                                     )
                                   ],
                                 ),
