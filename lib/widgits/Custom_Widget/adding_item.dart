@@ -11,6 +11,7 @@ void addToBasket(BuildContext context, Map<String, dynamic> product) {
       isContain = true;
 
       basketProduct["quantity"] += 1;
+      print(basketProduct["quantity"] );
       basketProduct["totalPrice"] =
           basketProduct["price"] * basketProduct["quantity"];
       break;

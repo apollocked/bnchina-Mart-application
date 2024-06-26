@@ -24,7 +24,7 @@ class _OrdersPageState extends State<OrdersPage> {
         }
       }
     });
-    print(v[1]["quantity"].toString());
+    print(v[0]["quantity"].toString());
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: customAppBar(),
@@ -77,7 +77,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                 ]))
                               ],
                             ),
-                            Text(orders[1]["Date"].toString())
+                            Text(orders[0]["Date"].toString())
                           ],
                         ),
                         SizedBox(
@@ -102,7 +102,7 @@ class _OrdersPageState extends State<OrdersPage> {
                                       flex: 1,
                                     ),
                                     Image.asset(
-                                      v[1]["imgPath"],
+                                      v[0]["imgPath"],
                                       height: 65,
                                       alignment: Alignment.center,
                                       fit: BoxFit.contain,
@@ -126,12 +126,12 @@ class _OrdersPageState extends State<OrdersPage> {
                                               child: Text.rich(
                                             TextSpan(children: [
                                               TextSpan(
-                                                  text: v[1]["name"],
+                                                  text: v[0]["name"],
                                                   style:
                                                       TextStyle(fontSize: 10)),
                                               TextSpan(
                                                   text:
-                                                      ".  ${v[1]["quantity"].toString()}"),
+                                                      ".  ${v[0]["quantity"].toString()}"),
                                             ]),
                                           ))
                                         ],

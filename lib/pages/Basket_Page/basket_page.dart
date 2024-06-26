@@ -87,11 +87,11 @@ class _BasketPageState extends State<BasketPage> {
                   setState(() {
                     orders.add({
                       "OrderID": shortid.generate(),
-                      "data": basketItems,
                       "date": DateFormat.yMd().format(DateTime.now()),
                       "TotalPrice": currentUser["discount"] != 0
                           ? discount().toString()
                           : addtototal().toString(),
+                      "data": basketItems,
                     });
                     basketItems = [];
                     currentUser["discount"] = 0;
