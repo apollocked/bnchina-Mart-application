@@ -48,9 +48,7 @@ class Accountpage extends StatelessWidget {
               color: primaryColor,
             ),
             ontap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return OrdersPage();
-              }));
+              CustomSnackbar(errorColor, context, "we still are working on it");
             }),
         CustomTile(
             text: "Change password",
