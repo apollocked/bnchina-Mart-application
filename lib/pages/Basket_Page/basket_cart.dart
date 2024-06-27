@@ -105,7 +105,7 @@ class _BasketCardState extends State<BasketCard> {
                             color: inblack,
                           ),
                         ),
-                        Text("${widget.product["quantity"].toString()}"),
+                        Text(widget.product["quantity"].toString()),
                         FloatingActionButton(
                           heroTag: "basket p ${widget.product["imgPath"]}",
                           onPressed: widget.onplus,
