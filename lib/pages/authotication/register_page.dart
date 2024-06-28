@@ -100,6 +100,7 @@ class SignUpPage extends StatelessWidget {
                                     isval = true;
                                     return null;
                                   }
+                                  return null;
                                 },
                                 onsave: (newValue) {
                                   email = newValue;
@@ -119,6 +120,7 @@ class SignUpPage extends StatelessWidget {
                                     isval = true;
                                     return null;
                                   }
+                                  return null;
                                 },
                                 onsave: (newValue) {
                                   password = newValue;

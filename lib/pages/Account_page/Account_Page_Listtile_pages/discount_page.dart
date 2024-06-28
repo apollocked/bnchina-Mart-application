@@ -1,7 +1,7 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables, avoid_print
-import 'package:minimart/pages/layout_page.dart';
+import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/widgits/Custom_Widget/adding_discount.dart';
+import 'package:minimart/widgits/Functions/adding_discount.dart';
 import 'package:flutter/material.dart';
 import 'package:minimart/utils/assets.dart';
 

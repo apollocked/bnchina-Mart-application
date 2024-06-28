@@ -1,8 +1,8 @@
-import 'package:minimart/pages/Onclick_Pages/categories_page.dart';
+import 'package:minimart/pages/Category_page/categories_page.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';
-import 'package:minimart/pages/Onclick_Pages/product_item_page.dart';
+import 'package:minimart/pages/Product_page/product_item_page.dart';
 import 'package:minimart/widgits/Item_Lests/product_vertical_list.dart';
 import 'package:minimart/widgits/Item_Lests/tranding_now_list.dart';
 import 'package:minimart/widgits/categorycard/categorycardlist.dart';

@@ -1,5 +1,5 @@
 import 'package:minimart/pages/Authotication/register_page.dart';
-import 'package:minimart/pages/layout_page.dart';
+import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';

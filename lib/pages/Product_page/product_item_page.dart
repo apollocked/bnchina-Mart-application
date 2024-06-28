@@ -1,5 +1,5 @@
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/widgits/Custom_Widget/adding_item.dart';
+import 'package:minimart/widgits/Functions/adding_item.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:minimart/widgits/categorycard/category_text.dart';

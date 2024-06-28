@@ -1,6 +1,6 @@
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
-import 'package:minimart/pages/Onclick_Pages/category_page.dart';
+import 'package:minimart/pages/Category_page/category_page.dart';
 import 'package:minimart/widgits/categorycard/category_text.dart';
 import 'package:flutter/material.dart';
 

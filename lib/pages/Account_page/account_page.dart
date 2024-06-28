@@ -5,7 +5,7 @@ import 'package:minimart/pages/Authotication/register_page.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';
-import 'package:minimart/widgits/Custom_Widget/custom_list_tile.dart';
+import 'package:minimart/widgits/Item_Lests/custom_list_tile.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

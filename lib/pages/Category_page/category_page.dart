@@ -1,6 +1,6 @@
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';
-import 'package:minimart/widgits/categorycard/trending_product_cart.dart';
+import 'package:minimart/widgits/Costum_cards/trending_product_cart.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

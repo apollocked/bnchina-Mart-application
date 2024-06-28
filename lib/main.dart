@@ -1,5 +1,4 @@
 import 'package:minimart/pages/Authotication/register_page.dart';
-import 'package:minimart/pages/layout_page.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:flutter/material.dart';
 

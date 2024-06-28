@@ -1,6 +1,6 @@
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/widgits/Custom_Widget/adding_item.dart';
-import 'package:minimart/pages/Onclick_Pages/product_item_page.dart';
+import 'package:minimart/widgits/Functions/adding_item.dart';
+import 'package:minimart/pages/Product_page/product_item_page.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
