@@ -8,9 +8,8 @@ Color inblack = Colors.black87;
 Color whiteColor = const Color(0xffFFFFFF);
 Color blackColor = const Color(0xff000000);
 Color brownColor = const Color(0xffA8A29E);
-Color orderpageColor = Color.fromARGB(255, 203, 203, 124);
+Color orderpageColor = Color.fromARGB(255, 144, 111, 201);
 Color lightGreyColor = const Color(0xfff9f9f9);
 
 Color lightBlueColor = const Color(0xffC8EBFF);
-Color darkBlueColor = const Color(0xff49697B);
 Color errorColor = const Color(0xffFF2C2C);

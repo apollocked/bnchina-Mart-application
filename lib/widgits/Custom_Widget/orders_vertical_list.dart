@@ -10,6 +10,9 @@ class OrdersVerticalList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 225,
+      margin: EdgeInsets.symmetric(
+        vertical: 5,
+      ),
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 6),
       decoration: BoxDecoration(
           color: darkGreyColor, borderRadius: BorderRadius.circular(8)),
@@ -56,13 +59,14 @@ class OrdersVerticalList extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Text.rich(
               TextSpan(children: [
+                TextSpan(text: "Total : "),
                 TextSpan(
                   text: orders["TotalPrice"].toString(),
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'popins',
-                      color: blackColor),
+                      color: textColor),
                 ),
                 TextSpan(
                   text: " IQD",

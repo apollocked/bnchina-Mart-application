@@ -6,45 +6,7 @@ Map<String, dynamic> currentUser = {
   "password": "aaaaaaaa",
   "discount": 0,
 };
-List<Map<String, dynamic>> orders = [
-  {
-    "OrderID": "uhgujnmlk852",
-    "date": DateFormat.yMd().format(DateTime.now()),
-    "Data": [
-      {
-        "name": "Watermelon",
-        "imgPath": "assets/products/watermelon.png",
-        "details": "Food Details",
-        "price": 1500,
-        "quantity": 3,
-        "category": "Fruits",
-        "isTrending": true,
-        "totalPrice": 4500,
-      },
-      {
-        "name": "Chips",
-        "imgPath": "assets/products/chips.png",
-        "details": "Food Details",
-        "price": 1500,
-        "quantity": 1,
-        "category": "Snacks",
-        "isTrending": true,
-        "totalPrice": 1500,
-      },
-      {
-        "name": "Coffee",
-        "imgPath": "assets/products/coffee.png",
-        "details": "Food Details",
-        "price": 1500,
-        "category": "Coffee",
-        "quantity": 1,
-        "isTrending": true,
-        "totalPrice": 1500,
-      }
-    ],
-    "TotalPrice": 7500
-  }
-];
+List<Map<String, dynamic>> orders = [];
 
 List<Map<String, dynamic>> coubons = [
   {
