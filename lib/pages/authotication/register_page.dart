@@ -24,28 +24,8 @@ class SignUpPage extends StatelessWidget {
       "email": email,
       "password": password,
     });
-    bool isLogin = false;
 
-    for (var element in accounts) {
-      if (element['email'] == email && element['password'] == password) {
-        currentUser = element;
-
-        isLogin = true;
-        break;
-      }
-    }
-    if (!isLogin) {
-      ScaffoldMessenger.of(context).clearSnackBars();
-
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text(
-        "this account not avalable",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          backgroundColor: errorColor,
-          color: textColor,
-        ),
-      )));
+    if (!isval) {
       return;
     }
 
@@ -92,8 +72,9 @@ class SignUpPage extends StatelessWidget {
                                 onvalidad: (value) {
                                   if (value == null || value.isEmpty) {
                                     isval = false;
-                                    return "password is required";
+                                    return "username is required";
                                   }
+
                                   isval = true;
                                   return null;
                                 },
@@ -115,8 +96,10 @@ class SignUpPage extends StatelessWidget {
                                     isval = false;
                                     return 'email is not validate';
                                   }
-                                  isval = true;
-                                  return null;
+                                  if (isval) {
+                                    isval = true;
+                                    return null;
+                                  }
                                 },
                                 onsave: (newValue) {
                                   email = newValue;
@@ -132,7 +115,10 @@ class SignUpPage extends StatelessWidget {
                                   if (value.length <= 7) {
                                     return "it must be more than 8 chars";
                                   }
-                                  return null;
+                                  if (isval) {
+                                    isval = true;
+                                    return null;
+                                  }
                                 },
                                 onsave: (newValue) {
                                   password = newValue;
