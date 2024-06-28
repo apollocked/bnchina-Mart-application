@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 
 Map<String, dynamic> currentUser = {
   "username": "apollo",

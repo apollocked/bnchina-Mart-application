@@ -1,12 +1,12 @@
-import 'package:MiniMart/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
-import 'package:MiniMart/pages/Account_page/Account_Page_Listtile_pages/discount_page.dart';
-import 'package:MiniMart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
-import 'package:MiniMart/pages/Authotication/register_page.dart';
-import 'package:MiniMart/utils/assets.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_list_tile.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/discount_page.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
+import 'package:minimart/pages/Authotication/register_page.dart';
+import 'package:minimart/utils/assets.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_list_tile.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -31,7 +31,7 @@ class Accountpage extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                currentUser["username"] ?? "MiniMart",
+                currentUser["username"] ?? "minimart",
                 style: TextStyle(
                     color: primaryColor,
                     fontSize: 20,

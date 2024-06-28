@@ -1,4 +1,4 @@
-import 'package:MiniMart/utils/data.dart';
+import 'package:minimart/utils/data.dart';
 
 double? discount() {
   double discountPrice = 0;

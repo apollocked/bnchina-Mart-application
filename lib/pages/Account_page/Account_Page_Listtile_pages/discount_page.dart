@@ -1,9 +1,9 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables, avoid_print
-import 'package:MiniMart/pages/layout_page.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/widgits/Custom_Widget/adding_discount.dart';
+import 'package:minimart/pages/layout_page.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/widgits/Custom_Widget/adding_discount.dart';
 import 'package:flutter/material.dart';
-import 'package:MiniMart/utils/assets.dart';
+import 'package:minimart/utils/assets.dart';
 
 class DiscountPage extends StatefulWidget {
   const DiscountPage({super.key});

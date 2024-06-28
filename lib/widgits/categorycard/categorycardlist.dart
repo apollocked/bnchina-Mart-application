@@ -1,5 +1,5 @@
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/categorycard/categorycarditem.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/categorycard/categorycarditem.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCard extends StatefulWidget {

@@ -1,13 +1,9 @@
-
-import 'package:MiniMart/utils/colors.dart';
+import 'package:minimart/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomTile extends StatelessWidget {
   const CustomTile(
-      {super.key,
-      required this.text,
-      required this.icon,
-      required this.ontap});
+      {super.key, required this.text, required this.icon, required this.ontap});
 
   final Widget icon;
   final VoidCallback ontap;

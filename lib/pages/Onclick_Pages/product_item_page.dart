@@ -1,8 +1,8 @@
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/widgits/Custom_Widget/adding_item.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
-import 'package:MiniMart/widgits/categorycard/category_text.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/widgits/Custom_Widget/adding_item.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
+import 'package:minimart/widgits/categorycard/category_text.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

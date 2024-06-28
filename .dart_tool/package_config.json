@@ -254,13 +254,13 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "MiniMart",
+      "name": "minimart",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-06-24T23:15:00.712040Z",
+  "generated": "2024-06-28T22:29:43.077800Z",
   "generator": "pub",
   "generatorVersion": "3.4.3",
   "flutterRoot": "file:///C:/crs/flutter",

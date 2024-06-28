@@ -1,5 +1,5 @@
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/widgits/Custom_Widget/products.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/widgits/Custom_Widget/products.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

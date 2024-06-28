@@ -1,5 +1,5 @@
-import 'package:MiniMart/pages/layout_page.dart';
-import 'package:MiniMart/utils/colors.dart';
+import 'package:minimart/pages/layout_page.dart';
+import 'package:minimart/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {

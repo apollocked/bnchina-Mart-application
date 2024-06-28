@@ -1,5 +1,4 @@
-
-import 'package:MiniMart/utils/colors.dart';
+import 'package:minimart/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class CustomBanner extends StatelessWidget {

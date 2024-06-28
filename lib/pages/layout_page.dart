@@ -1,11 +1,11 @@
 // ignore_for_file: deprecated_member_use, duplicate_ignore
 
-import 'package:MiniMart/pages/Basket_Page/basket_page.dart';
-import 'package:MiniMart/pages/Account_page/account_page.dart';
-import 'package:MiniMart/pages/Home_page/home_page.dart';
-import 'package:MiniMart/utils/assets.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:minimart/pages/Basket_Page/basket_page.dart';
+import 'package:minimart/pages/Account_page/account_page.dart';
+import 'package:minimart/pages/Home_page/home_page.dart';
+import 'package:minimart/utils/assets.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

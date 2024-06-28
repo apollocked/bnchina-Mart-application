@@ -1,8 +1,8 @@
-import 'package:MiniMart/pages/Basket_Page/basket_cart.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
-import 'package:MiniMart/widgits/Custom_Widget/total_price_finctions.dart';
+import 'package:minimart/pages/Basket_Page/basket_cart.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
+import 'package:minimart/widgits/Custom_Widget/total_price_finctions.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shortid/shortid.dart';

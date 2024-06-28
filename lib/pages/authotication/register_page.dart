@@ -1,9 +1,9 @@
-import 'package:MiniMart/pages/Authotication/login_page.dart';
-import 'package:MiniMart/utils/assets.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_banner.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_textfeild.dart';
+import 'package:minimart/pages/Authotication/login_page.dart';
+import 'package:minimart/utils/assets.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_banner.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_textfeild.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable

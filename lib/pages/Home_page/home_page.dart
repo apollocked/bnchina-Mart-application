@@ -1,11 +1,11 @@
-import 'package:MiniMart/pages/Onclick_Pages/categories_page.dart';
-import 'package:MiniMart/utils/assets.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/pages/Onclick_Pages/product_item_page.dart';
-import 'package:MiniMart/widgits/Item_Lests/product_vertical_list.dart';
-import 'package:MiniMart/widgits/Item_Lests/tranding_now_list.dart';
-import 'package:MiniMart/widgits/categorycard/categorycardlist.dart';
+import 'package:minimart/pages/Onclick_Pages/categories_page.dart';
+import 'package:minimart/utils/assets.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/pages/Onclick_Pages/product_item_page.dart';
+import 'package:minimart/widgits/Item_Lests/product_vertical_list.dart';
+import 'package:minimart/widgits/Item_Lests/tranding_now_list.dart';
+import 'package:minimart/widgits/categorycard/categorycardlist.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

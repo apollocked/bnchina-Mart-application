@@ -1,7 +1,7 @@
 // ignore: non_constant_identifier_names
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 
 void AddingDiscount(String value, context) async {
   for (var element in coubons) {

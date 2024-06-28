@@ -1,6 +1,6 @@
-import 'package:MiniMart/utils/colors.dart';
+import 'package:minimart/utils/colors.dart';
 
-import 'package:MiniMart/widgits/Custom_Widget/orders_card.dart';
+import 'package:minimart/widgits/Custom_Widget/orders_card.dart';
 import 'package:flutter/material.dart';
 
 class OrdersVerticalList extends StatelessWidget {

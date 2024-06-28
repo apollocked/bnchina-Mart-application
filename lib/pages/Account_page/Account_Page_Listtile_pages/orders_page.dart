@@ -1,10 +1,10 @@
 // ignore_for_file: avoid_print
 
-import 'package:MiniMart/utils/assets.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
-import 'package:MiniMart/widgits/Custom_Widget/orders_vertical_list.dart';
+import 'package:minimart/utils/assets.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:minimart/widgits/Custom_Widget/orders_vertical_list.dart';
 import 'package:flutter/material.dart';
 
 class OrdersPage extends StatefulWidget {

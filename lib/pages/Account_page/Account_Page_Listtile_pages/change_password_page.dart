@@ -1,17 +1,17 @@
 // ignore_for_file: deprecated_member_use
 
-import 'package:MiniMart/pages/layout_page.dart';
-import 'package:MiniMart/utils/assets.dart';
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_textfeild.dart';
+import 'package:minimart/pages/layout_page.dart';
+import 'package:minimart/utils/assets.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_textfeild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ChangePasswordPage extends StatefulWidget {
-  const  ChangePasswordPage({super.key});
+  const ChangePasswordPage({super.key});
 
   @override
   State<ChangePasswordPage> createState() => _ChangePasswordPageState();

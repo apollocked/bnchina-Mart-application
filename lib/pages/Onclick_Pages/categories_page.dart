@@ -1,7 +1,7 @@
-import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
-import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
-import 'package:MiniMart/widgits/categorycard/categorycarditem.dart';
+import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
+import 'package:minimart/widgits/categorycard/categorycarditem.dart';
 
 import 'package:flutter/material.dart';
 
