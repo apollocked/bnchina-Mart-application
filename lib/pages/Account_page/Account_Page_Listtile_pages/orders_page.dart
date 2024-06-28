@@ -18,13 +18,7 @@ class _OrdersPageState extends State<OrdersPage> {
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> v = orders[0]["Data"];
 
-    if (v.isNotEmpty) {
-      for (var element in v) {
-        v.add(element);
-      }
-    }
-
-    // print(v[0]["quantity"].toString());
+   
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: customAppBar(),
@@ -79,7 +73,7 @@ class _OrdersPageState extends State<OrdersPage> {
                             ]))
                           ],
                         ),
-                        Text(orders[0]["Date"].toString())
+                        Text(orders[0]["date"].toString())
                       ],
                     ),
                     SizedBox(
@@ -127,10 +121,16 @@ class _OrdersPageState extends State<OrdersPage> {
                                         TextSpan(children: [
                                           TextSpan(
                                               text: v[0]["name"],
-                                              style: TextStyle(fontSize: 10)),
+                                              style: TextStyle(
+                                                  fontSize: 11,
+                                                  fontFamily: "Poppins")),
                                           TextSpan(
                                               text:
-                                                  " ${v[0]["quantity"].toString()}"),
+                                                  " ${v[0]["quantity"].toString()} pics",
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: "Poppins"))
                                         ]),
                                       ))
                                     ],

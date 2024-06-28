@@ -28,7 +28,6 @@ class _BasketPageState extends State<BasketPage> {
                       return BasketCard(
                         product: basketItems[index],
                         onMinus: () {
-                          setState(() {});
                           setState(() {
                             if (basketItems[index]["quantity"] != 0) {
                               basketItems[index]["quantity"] =
@@ -91,8 +90,9 @@ class _BasketPageState extends State<BasketPage> {
                       "TotalPrice": currentUser["discount"] != 0
                           ? discount().toString()
                           : addtototal().toString(),
-                      "data": basketItems,
+                      "Data": basketItems,
                     });
+
                     basketItems = [];
                     currentUser["discount"] = 0;
                     CustomSnackbar(

@@ -1,6 +1,5 @@
-
 import 'package:MiniMart/utils/colors.dart';
-import 'package:MiniMart/utils/data.dart';
+import 'package:MiniMart/widgits/Custom_Widget/adding_item.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:MiniMart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:MiniMart/widgits/categorycard/category_text.dart';
@@ -84,8 +83,8 @@ class ProductItem extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
             child: ElevatedButton(
               onPressed: () {
-                basketItems.add(product);
-                CustomSnackbar(primaryColor,context, "added to your basket");
+                addToBasket(context, product);
+                CustomSnackbar(primaryColor, context, "added to your basket");
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(

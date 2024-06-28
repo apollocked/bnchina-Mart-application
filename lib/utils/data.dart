@@ -7,40 +7,43 @@ Map<String, dynamic> currentUser = {
   "discount": 0,
 };
 List<Map<String, dynamic>> orders = [
-  // {
-  //   "OrderID": "uhgujnmlk852",
-  //   "Date": DateFormat.yMd().format(DateTime.now()),
-  //   "Data": {
-  //     {
-  //       "name": "Watermelon",
-  //       "imgPath": "assets/products/watermelon.png",
-  //       "details": "Food Details",
-  //       "price": 1500,
-  //       "quantity": 1,
-  //       "category": "Fruits",
-  //       "isTrending": true,
-  //     },
-  //     {
-  //       "name": "Chips",
-  //       "imgPath": "assets/products/chips.png",
-  //       "details": "Food Details",
-  //       "price": 1500,
-  //       "quantity": 1,
-  //       "category": "Snacks",
-  //       "isTrending": true,
-  //     },
-  //     {
-  //       "name": "Coffee",
-  //       "imgPath": "assets/products/coffee.png",
-  //       "details": "Food Details",
-  //       "price": 1500,
-  //       "category": "Coffee",
-  //       "quantity": 1,
-  //       "isTrending": true,
-  //     }
-  //   },
-  //   "TotalPrice": 12000
-  // }
+  {
+    "OrderID": "uhgujnmlk852",
+    "date": DateFormat.yMd().format(DateTime.now()),
+    "Data": [
+      {
+        "name": "Watermelon",
+        "imgPath": "assets/products/watermelon.png",
+        "details": "Food Details",
+        "price": 1500,
+        "quantity": 3,
+        "category": "Fruits",
+        "isTrending": true,
+        "totalPrice": 4500,
+      },
+      {
+        "name": "Chips",
+        "imgPath": "assets/products/chips.png",
+        "details": "Food Details",
+        "price": 1500,
+        "quantity": 1,
+        "category": "Snacks",
+        "isTrending": true,
+        "totalPrice": 1500,
+      },
+      {
+        "name": "Coffee",
+        "imgPath": "assets/products/coffee.png",
+        "details": "Food Details",
+        "price": 1500,
+        "category": "Coffee",
+        "quantity": 1,
+        "isTrending": true,
+        "totalPrice": 1500,
+      }
+    ],
+    "TotalPrice": 7500
+  }
 ];
 
 List<Map<String, dynamic>> coubons = [
@@ -162,6 +165,7 @@ List<Map<String, dynamic>> products = [
     "category": "Fruits",
     "quantity": 1,
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Chips",
@@ -171,6 +175,7 @@ List<Map<String, dynamic>> products = [
     "category": "Snacks",
     "quantity": 1,
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Coffee",
@@ -180,6 +185,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Coffee",
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Milk",
@@ -189,6 +195,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Milk",
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Neutonic",
@@ -198,6 +205,7 @@ List<Map<String, dynamic>> products = [
     "category": "Drinks",
     "quantity": 1,
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Pepsi",
@@ -207,6 +215,7 @@ List<Map<String, dynamic>> products = [
     "category": "Drinks",
     "quantity": 1,
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Redbull",
@@ -216,6 +225,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Drinks",
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Kinder",
@@ -225,6 +235,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Snacks",
     "isTrending": false,
+    "totalPrice": 1500,
   },
   {
     "name": "Banana",
@@ -234,6 +245,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Fruits",
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Broccoli",
@@ -243,6 +255,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Greens",
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Lemon",
@@ -252,6 +265,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Fruits",
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Orange",
@@ -261,6 +275,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Fruits",
     "isTrending": true,
+    "totalPrice": 1500,
   },
   {
     "name": "Yogurt",
@@ -270,6 +285,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Milk",
     "isTrending": false,
+    "totalPrice": 1500,
   },
   {
     "name": "Salmon",
@@ -279,6 +295,7 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Seafood",
     "isTrending": false,
+    "totalPrice": 1500,
   },
   {
     "name": "Apple",
@@ -288,5 +305,6 @@ List<Map<String, dynamic>> products = [
     "quantity": 1,
     "category": "Fruits",
     "isTrending": false,
+    "totalPrice": 1500,
   },
 ];
