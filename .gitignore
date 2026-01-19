@@ -3,15 +3,3 @@
 
 # Flutter build and generated files
 /build/
-.dart_tool/
-.packages
-
-# Android / iOS generated files
-android/.gradle/
-ios/Pods/
-ios/.symlinks/
-ios/Flutter/Flutter.framework
-ios/Flutter/App.framework
-*.apk
-*.aab
-*.so
