@@ -15,11 +15,3 @@ ios/Flutter/App.framework
 *.apk
 *.aab
 *.so
-
-# IDE / editor files
-.idea/
-*.iml
-.vscode/
-
-# Mac OS
-.DS_Store
