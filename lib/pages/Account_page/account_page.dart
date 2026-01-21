@@ -29,7 +29,7 @@ class Accountpage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                currentUser["username"] ?? "Guest",
+                currentUser["username"]?.toString() ?? "Guest",
                 style: TextStyle(
                     color: primaryColor,
                     fontSize: 20,
