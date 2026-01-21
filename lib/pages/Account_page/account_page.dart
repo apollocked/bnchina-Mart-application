@@ -95,17 +95,39 @@ class Accountpage extends StatelessWidget {
           },
         ),
         CustomTile(
-            text: "Signout",
-            icon: SvgPicture.asset(
-              signoutIcon,
-              color: primaryColor,
-            ),
-            ontap: () {
-              currentUser = {};
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return SignUpPage();
-              }));
-            }),
+          text: "Signout",
+          icon: SvgPicture.asset(
+            signoutIcon,
+            color: primaryColor,
+          ),
+          ontap: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text("Sign Out"),
+                content: Text("Are you sure you want to sign out?"),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text("Cancel"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      currentUser = {};
+                      Navigator.pop(context); // Close dialog
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpPage()),
+                      );
+                    },
+                    child:
+                        Text("Sign Out", style: TextStyle(color: Colors.red)),
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ],
     );
   }
