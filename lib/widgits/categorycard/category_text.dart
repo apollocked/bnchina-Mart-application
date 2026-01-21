@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class CategoryText extends StatelessWidget {
   CategoryText({super.key, required this.category});
-  // ignore: prefer_typing_uninitialized_variables
+  // ignore: prefer_typing_uninitialized_variables, strict_top_level_inference
   var category;
   @override
   Widget build(BuildContext context) {

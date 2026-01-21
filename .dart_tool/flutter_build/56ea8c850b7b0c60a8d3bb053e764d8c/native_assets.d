@@ -1,1 +1,0 @@
- C:\\Users\\TOTAL\ TECH\\Desktop\\New\ folder\\bnchina-Mart-application\\.dart_tool\\flutter_build\\56ea8c850b7b0c60a8d3bb053e764d8c\\native_assets.yaml: 

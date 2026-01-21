@@ -27,19 +27,28 @@ class Accountpage extends StatelessWidget {
                 backgroundImage: AssetImage(avatarBoy),
                 radius: 50,
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               Text(
-                currentUser["username"] ?? "minimart",
+                currentUser["username"] ?? "Guest",
                 style: TextStyle(
                     color: primaryColor,
                     fontSize: 20,
                     fontFamily: "Poppins",
                     fontWeight: FontWeight.bold),
               ),
+              if (currentUser["email"] != null)
+                Text(
+                  currentUser["email"],
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 14,
+                  ),
+                ),
             ],
           ),
+        ),
+        const SizedBox(
+          height: 30,
         ),
         CustomTile(
             text: "Orders",

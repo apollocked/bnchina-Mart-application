@@ -1,4 +1,4 @@
-import 'package:minimart/pages/Authotication/register_page.dart';
+import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +19,6 @@ class BnchinaMartApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: backgroundColor),
           useMaterial3: true,
         ),
-        home: SignUpPage());
+        home: LayoutPage());
   }
 }
