@@ -1,7 +1,7 @@
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/discount_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
-import 'package:minimart/pages/Authotication/register_page.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/signout_massege.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';
@@ -113,30 +113,7 @@ class Accountpage extends StatelessWidget {
             ),
             ontap: () {
               showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text("Sign Out"),
-                  content: Text("Are you sure you want to sign out?"),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(context),
-                      child: Text("Cancel"),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        currentUser = {};
-                        Navigator.pop(context); // Close dialog
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpPage()),
-                        );
-                      },
-                      child:
-                          Text("Sign Out", style: TextStyle(color: Colors.red)),
-                    ),
-                  ],
-                ),
-              );
+                  context: context, builder: (context) => SignoutMassege());
             },
           ),
         ],

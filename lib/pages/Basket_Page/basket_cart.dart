@@ -7,9 +7,9 @@ class BasketCard extends StatefulWidget {
       {super.key,
       required this.product,
       required this.onMinus,
-      required this.onplus});
+      required this.onPlus});
   final Map<String, dynamic> product;
-  final VoidCallback onplus;
+  final VoidCallback onPlus;
   final VoidCallback onMinus;
 
   @override
@@ -108,7 +108,7 @@ class _BasketCardState extends State<BasketCard> {
                         Text(widget.product["quantity"].toString()),
                         FloatingActionButton(
                           heroTag: "basket p ${widget.product["imgPath"]}",
-                          onPressed: widget.onplus,
+                          onPressed: widget.onPlus,
                           backgroundColor: primaryColor,
                           shape: const CircleBorder(),
                           child: Icon(
