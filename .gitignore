@@ -1,37 +1,7 @@
  
-# Ignore node modules
-node_modules/       
-# Ignore build output
+
 dist/
 build/
-# Ignore environment variable files
-.env
-.env.local
-
-# Ignore log files
-
-*.log   
-# Ignore OS generated files
-.DS_Store
-Thumbs.db
-# Ignore IDE specific files
-.vscode/
-
-.idea/
-*.iml
-# Ignore coverage reports
-coverage/
-# Ignore temporary files
-*.tmp
-*.swp
-# Ignore package lock files
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-# Ignore test output
-test-output/
-# Ignore compiled files
-*.class
 
 
 
