@@ -21,57 +21,129 @@ class _DiscountPageState extends State<DiscountPage> {
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewInsets.bottom,
       ),
-      child: SingleChildScrollView(
-        child: Column(children: [
-          Image.asset(coupon),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            "Enter Coupon Code",
-            style: TextStyle(color: textColor, fontSize: 20),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(
-            children: [
-              TextFormField(
-                controller: control,
-                autofocus: true,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(7))),
-                    hintText: "Coupon Code",
-                    hintStyle: TextStyle(color: darkGreyColor)),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      AddingDiscount(control.text, context);
-                      Navigator.pop(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const LayoutPage();
-                      }));
-                    });
-                  },
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      minimumSize: const Size(double.infinity, 50)),
+      child: Container(
+        decoration: BoxDecoration(
+          color: surfaceColor,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Handle bar
+                Center(
+                  child: Container(
+                    width: 40,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: subTextColor.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Coupon image
+                Center(child: Image.asset(coupon, height: 100)),
+                const SizedBox(height: 16),
+                Center(
                   child: Text(
-                    "Check Coupon Code",
-                    style: TextStyle(color: textColor),
-                  ))
-            ],
-          )
-        ]),
+                    "Enter Coupon Code",
+                    style: TextStyle(
+                        color: textColor,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Center(
+                  child: Text(
+                    "Apply a coupon to get discounts on your order",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: subTextColor, fontSize: 12, height: 1.5),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Text field
+                TextFormField(
+                  controller: control,
+                  autofocus: true,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(color: textColor),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: backgroundColor,
+                    contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide:
+                          BorderSide(color: primaryColor.withOpacity(0.3)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(
+                          color: primaryColor.withOpacity(0.25), width: 1.2),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide(color: primaryColor, width: 1.8),
+                    ),
+                    hintText: "e.g. 2314",
+                    hintStyle: TextStyle(color: subTextColor),
+                    prefixIcon: Icon(Icons.discount_outlined,
+                        color: primaryColor, size: 20),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                // Button
+                Container(
+                  height: 52,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    gradient: primaryGradient,
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: [
+                      BoxShadow(
+                        color: primaryColor.withOpacity(0.35),
+                        blurRadius: 12,
+                        offset: const Offset(0, 5),
+                      ),
+                    ],
+                  ),
+                  child: ElevatedButton.icon(
+                    onPressed: () {
+                      setState(() {
+                        AddingDiscount(control.text, context);
+                        Navigator.pop(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const LayoutPage();
+                        }));
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(14)),
+                    ),
+                    icon: Icon(Icons.check_circle_outline_rounded,
+                        color: Colors.black, size: 20),
+                    label: Text(
+                      "Apply Coupon",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

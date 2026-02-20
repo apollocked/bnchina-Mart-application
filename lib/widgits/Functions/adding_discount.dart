@@ -8,12 +8,19 @@ void AddingDiscount(String value, context) async {
     if (value == element["code"]) {
       currentUser["discount"] = element["discount"];
 
+      addNotification(
+        title: "Coupon Activated! 🏷️",
+        message:
+            "Coupon \"$value\" applied — you get ${element["discount"]}% off your next order!",
+        type: "coupon",
+      );
+
       CustomSnackbar(primaryColor, context,
-          "Enjoy your % ${currentUser["discount"]} Discount");
+          "🏷️ ${currentUser["discount"]}% discount applied!");
       break;
     } else {
       CustomSnackbar(
-          errorColor, context, "Wrong coupon, Please enter coupon correctly ");
+          errorColor, context, "Wrong coupon. Please check and try again.");
     }
   }
 }

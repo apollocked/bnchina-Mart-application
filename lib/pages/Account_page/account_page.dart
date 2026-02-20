@@ -1,5 +1,6 @@
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/discount_page.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/notifications_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/signout_massege.dart';
 import 'package:minimart/utils/assets.dart';
@@ -10,9 +11,14 @@ import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Accountpage extends StatelessWidget {
+class Accountpage extends StatefulWidget {
   const Accountpage({super.key});
 
+  @override
+  State<Accountpage> createState() => _AccountpageState();
+}
+
+class _AccountpageState extends State<Accountpage> {
   Future<void> _refreshUserData(BuildContext context) async {
     await Future.delayed(const Duration(seconds: 1));
   }
@@ -137,9 +143,14 @@ class Accountpage extends StatelessWidget {
           CustomTile(
             text: "Notifications",
             icon: SvgPicture.asset(notificationIcon, color: primaryColor),
-            ontap: () {
-              CustomSnackbar(
-                  errorColor, context, "We're still working on this 🚧");
+            ontap: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const NotificationsPage()),
+              );
+              // Rebuild badge after returning from notifications page
+              setState(() {});
             },
           ),
           CustomTile(
