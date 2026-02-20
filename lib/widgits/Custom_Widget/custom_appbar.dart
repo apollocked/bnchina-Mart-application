@@ -1,6 +1,6 @@
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/notifications_page.dart';
+import 'package:minimart/services/notification_service.dart';
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/utils/data.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -16,8 +16,17 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-  int get _unreadCount =>
-      notifications.where((n) => n["isRead"] == false).length;
+  // Badge updates are handled purely by rebuilding when NotificationService state changes
+  // or when navigating back from NotificationsPage, since we use `setState`
+
+  void _navigateToNotifications() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const NotificationsPage()),
+    );
+    // Refresh the UI to reflect new notification count
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +65,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       ),
       actions: [
         GestureDetector(
-          onTap: () async {
-            await Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => const NotificationsPage()),
-            );
-            // Rebuild badge after returning from notifications page
-            setState(() {});
-          },
+          onTap: _navigateToNotifications,
           child: Container(
             margin: const EdgeInsets.only(right: 12),
             padding: const EdgeInsets.all(9),
@@ -77,33 +78,29 @@ class _CustomAppBarState extends State<CustomAppBar> {
               ),
             ),
             child: Stack(
-              clipBehavior: Clip.none,
+              alignment: Alignment.topRight,
               children: [
                 FaIcon(
                   FontAwesomeIcons.bell,
                   color: primaryColor,
-                  size: 16,
+                  size: 20,
                 ),
-                if (_unreadCount > 0)
+
+                // Unread badge logic using NotificationService
+                if (NotificationService().unreadCount > 0)
                   Positioned(
-                    right: -6,
-                    top: -6,
+                    right: 0,
+                    top: 0,
                     child: Container(
-                      width: 16,
-                      height: 16,
+                      padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         color: errorColor,
                         shape: BoxShape.circle,
-                        border: Border.all(color: backgroundColor, width: 1.5),
+                        border: Border.all(color: surfaceColor, width: 1.5),
                       ),
-                      child: Center(
-                        child: Text(
-                          _unreadCount > 9 ? "9+" : "$_unreadCount",
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 8,
-                              fontWeight: FontWeight.bold),
-                        ),
+                      constraints: const BoxConstraints(
+                        minWidth: 10,
+                        minHeight: 10,
                       ),
                     ),
                   ),

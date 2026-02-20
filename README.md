@@ -48,7 +48,7 @@ A feature-rich mobile e-commerce application built with Flutter, allowing users 
 - **Add to Cart** - Add products from home, trending, or product detail pages
 - **Quantity Management** - Increase/decrease item quantities
 - **Remove Items** - Delete items from cart with quantity adjustment
-- **Cart Persistence** - Cart items maintained during session
+- **Cart Persistence** - Cart items securely saved via `shared_preferences` across app restarts
 - **Dynamic Total Calculation** - Real-time price updates
 - **Empty State Handling** - User-friendly empty cart message
 
@@ -180,10 +180,12 @@ mini_mart/
 │   │   │   ├── tranding_now_list.dart    # Trending products list
 │   │   │   ├── orders_vertical_list.dart # Orders display
 │   │   │   └── product_vertical_list.dart# Product list view
-│   │   └── Functions/
-│   │       ├── adding_item.dart          # Add to cart logic
-│   │       ├── adding_discount.dart      # Apply discount logic
-│   │       └── total_price_finctions.dart# Price calculations
+│   ├── services/
+│   │   ├── storage_service.dart          # Local storage wrapper
+│   │   ├── cart_service.dart             # Cart business logic
+│   │   ├── user_service.dart             # User profile & coupons
+│   │   ├── order_service.dart            # Order history logic
+│   │   └── notification_service.dart     # Notifications logic
 │   └── utils/
 │       ├── colors.dart                   # Color definitions
 │       ├── assets.dart                   # Asset paths
@@ -361,13 +363,13 @@ Code: 2364  | Discount: 25%
 
 ## 🏛️ Architecture
 
-### State Management Pattern
-Currently uses **Global State** (in-memory data storage):
-- `currentUser` - Logged-in user information
-- `basketItems` - Shopping cart items
-- `orders` - Order history
-- `accounts` - Registered users
-- `coubons` - Available discount codes
+### State Management & Persistence Pattern
+The application uses a **Services Architecture** coupled with `shared_preferences` to ensure localized data persistence.
+- **`StorageService`** - Singleton wrapper for serializing JSON data to device storage.
+- **`UserService`** - Manages user profile and applied coupons across app restarts.
+- **`CartService`** (ChangeNotifier) - Manages the cart state, updates quantities, handles discounted checkout totals, and rebuilds the UI effectively when items change.
+- **`OrderService`** - Archives purchases into persistent order history.
+- **`NotificationService`** - Holds live badge notification arrays and serializes/parses `DateTime` stamps correctly into JSON.
 
 ### Data Flow
 ```
@@ -375,39 +377,36 @@ User Input
    ↓
 Page/Widget
    ↓
-Function (adding_item, adding_discount, etc.)
+Service Method (e.g. CartService().addToCart(product))
    ↓
-Global State Update (data.dart)
+Service State Update + notifyListeners()
    ↓
-UI Rebuild via setState
+StorageService (Saves state locally to device)
+   ↓
+UI Rebuild via ListenableBuilder
    ↓
 Display Updated Data
 ```
 
-### Key Functions
+### Key Service Methods
 
-#### `addToBasket(context, product)`
-- Adds product to `basketItems`
-- Updates quantity if product already exists
-- Shows success SnackBar
-- Located in: `widgits/Functions/adding_item.dart`
+#### `CartService().addToCart(product)`
+- Adds product to `basketItems` or increases its quantity
+- Automatically persists the encoded JSON into `SharedPreferences`
+- Triggers UI rebuilds across layout elements listening to the Cart.
 
-#### `AddingDiscount(code, context)`
-- Validates coupon code
-- Updates user discount if valid
-- Shows error for invalid codes
-- Located in: `widgits/Functions/adding_discount.dart`
+#### `UserService().applyDiscount(percentage)`
+- Validates and applies a coupon code reduction percentage.
+- Saves the coupon session securely.
+- Automatically pushes a success/failure message to `NotificationService`.
 
-#### `addtototal()`
-- Calculates total from all basket items
-- Returns sum of all `totalPrice` values
-- Located in: `widgits/Functions/total_price_finctions.dart`
+#### `CartService().getDiscountedTotal()`
+- Calculates total from all basket items dynamically.
+- Automatically subtracts active User Session percentage reductions.
 
-#### `discount()`
-- Calculates discounted price
-- Applies percentage reduction
-- Returns final price after discount
-- Located in: `widgits/Functions/total_price_finctions.dart`
+#### `NotificationService().addNotification()`
+- Central notification builder for Purchase and Coupon Alerts.
+- Safely manages unread badge counts globally.
 
 ---
 
@@ -492,13 +491,12 @@ dependencies:
 
 ## 🐛 Known Limitations
 
-1. **Data Persistence**: Data is lost when app closes (no database)
-2. **Authentication**: No backend validation, local only
-3. **Security**: Passwords stored in plain text (development only)
-4. **Payment**: No payment gateway integration
-5. **Images**: All images stored locally, no CDN
-6. **Real-time**: No push notifications or live updates
-7. **Search**: No search functionality implemented
+1. **Authentication**: No backend validation, local only. Passwords stored in plain text (development only).
+2. **Global State**: The architecture relies on Singleton Service patterns (`ChangeNotifier`). Larger scale would require Provider/Riverpod.
+3. **Payment**: No payment gateway integration
+4. **Images**: All images stored locally, no CDN content.
+5. **Real-time**: No push notifications
+6. **Search**: No search functionality implemented
 
 ---
 
@@ -516,11 +514,14 @@ dependencies:
 - **discount_page.dart** (95 lines) - Coupon entry
 - **layout_page.dart** (95 lines) - Main navigation container
 
-### Widgets (14 files)
+### Widgets (13 files)
 - **Custom Components**: 5 reusable custom widgets
 - **Cards**: 3 card/item components
 - **Lists**: 4 list display components
-- **Utilities**: 2 function files (pricing, discounts)
+
+### Services (5 files)
+- **cart_service.dart**, **user_service.dart**, **order_service.dart**, **notification_service.dart** - Core business logic handling state and data parsing
+- **storage_service.dart** - Secure local JSON string persistence engine
 
 ### Utils (3 files)
 - **colors.dart** - 12 color definitions
@@ -587,8 +588,7 @@ flutter upgrade
 - Restart the app completely
 
 ### Cart Data Lost
-- This is expected behavior (no persistence yet)
-- Implement Hive database for permanent storage
+- This should no longer occur! Restarting the app retains state via `SharedPreferences`. If data acts corrupt, clear app cache strings.
 
 ---
 
@@ -628,7 +628,8 @@ For issues, questions, or suggestions:
 - **Total Files**: 35
 - **Lines of Code**: ~3,800+
 - **Pages**: 11
-- **Custom Widgets**: 14
+- **Custom Widgets**: 13
+- **Services**: 5
 - **Products Available**: 15
 - **Categories**: 10
 - **Test Accounts**: 4
@@ -646,7 +647,7 @@ For issues, questions, or suggestions:
 
 ---
 
-**Last Updated**: January 2025
+**Last Updated**: February 2026
 **App Version**: 1.0.0
 **Flutter Version**: 3.0+
 **Platform**: iOS & Android

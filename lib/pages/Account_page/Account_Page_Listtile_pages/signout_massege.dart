@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:minimart/pages/Authotication/register_page.dart';
-import 'package:minimart/utils/data.dart';
+import 'package:minimart/services/user_service.dart';
 
 class SignoutMassege extends StatefulWidget {
   const SignoutMassege({super.key});
@@ -22,7 +22,7 @@ class _SignoutMassegeState extends State<SignoutMassege> {
         ),
         TextButton(
           onPressed: () {
-            currentUser = const {};
+            UserService().logout();
             Navigator.pop(context); // Close dialog
             Navigator.pushReplacement(
               context,

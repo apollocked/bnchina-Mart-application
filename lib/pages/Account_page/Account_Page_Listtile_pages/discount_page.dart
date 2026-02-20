@@ -1,7 +1,10 @@
 // ignore_for_file: must_be_immutable, prefer_typing_uninitialized_variables, avoid_print
 import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/widgits/Functions/adding_discount.dart';
+import 'package:minimart/services/user_service.dart';
+import 'package:minimart/services/notification_service.dart';
+import 'package:minimart/utils/data.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:minimart/utils/assets.dart';
 
@@ -115,11 +118,36 @@ class _DiscountPageState extends State<DiscountPage> {
                   child: ElevatedButton.icon(
                     onPressed: () {
                       setState(() {
-                        AddingDiscount(control.text, context);
-                        Navigator.pop(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const LayoutPage();
-                        }));
+                        bool found = false;
+                        for (var element in coubons) {
+                          if (control.text == element["code"]) {
+                            UserService().applyDiscount(element["discount"]);
+
+                            NotificationService().addNotification(
+                              title: "Coupon Activated! 🏷️",
+                              message:
+                                  "Coupon \"${control.text}\" applied — you get ${element["discount"]}% off your next order!",
+                              type: "coupon",
+                            );
+
+                            CustomSnackbar(primaryColor, context,
+                                "🏷️ ${element["discount"]}% discount applied!");
+                            found = true;
+                            break;
+                          }
+                        }
+
+                        if (!found) {
+                          CustomSnackbar(errorColor, context,
+                              "Wrong coupon. Please check and try again.");
+                        }
+
+                        if (found) {
+                          Navigator.pop(context,
+                              MaterialPageRoute(builder: (context) {
+                            return const LayoutPage();
+                          }));
+                        }
                       });
                     },
                     style: ElevatedButton.styleFrom(

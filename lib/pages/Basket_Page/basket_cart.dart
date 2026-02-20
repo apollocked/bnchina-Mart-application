@@ -1,5 +1,4 @@
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/utils/data.dart';
 import 'package:flutter/material.dart';
 
 class BasketCard extends StatefulWidget {
@@ -19,106 +18,103 @@ class BasketCard extends StatefulWidget {
 class _BasketCardState extends State<BasketCard> {
   @override
   Widget build(BuildContext context) {
-    return basketItems.isEmpty
-        ? Container()
-        : Container(
-            width: double.infinity,
-            height: 84,
-            margin: const EdgeInsets.symmetric(vertical: 5),
+    return Container(
+      width: double.infinity,
+      height: 84,
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      decoration: BoxDecoration(
+        color: surfaceColor,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: primaryColor.withOpacity(0.12),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.18),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          // Image
+          Container(
+            margin: const EdgeInsets.all(8),
+            width: 68,
+            height: 68,
             decoration: BoxDecoration(
-              color: surfaceColor,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(
-                color: primaryColor.withOpacity(0.12),
-                width: 1,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.18),
-                  blurRadius: 8,
-                  offset: const Offset(0, 3),
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Image.asset(widget.product["imgPath"], fit: BoxFit.contain),
+          ),
+          const SizedBox(width: 4),
+          // Info
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  widget.product["name"],
+                  style: TextStyle(
+                      fontSize: 13,
+                      color: textColor,
+                      fontWeight: FontWeight.bold),
                 ),
+                const SizedBox(height: 2),
+                Text(
+                  widget.product["details"] ?? '',
+                  style: TextStyle(fontSize: 10, color: subTextColor),
+                ),
+                const SizedBox(height: 3),
+                Text.rich(TextSpan(children: [
+                  TextSpan(
+                    text: widget.product["totalPrice"].toString(),
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor),
+                  ),
+                  TextSpan(
+                    text: " IQD",
+                    style: TextStyle(fontSize: 10, color: subTextColor),
+                  )
+                ])),
               ],
             ),
+          ),
+          // Quantity controls
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
             child: Row(
               children: [
-                // Image
-                Container(
-                  margin: const EdgeInsets.all(8),
-                  width: 68,
-                  height: 68,
-                  decoration: BoxDecoration(
-                    color: backgroundColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Image.asset(widget.product["imgPath"],
-                      fit: BoxFit.contain),
+                _QtyButton(
+                  icon: Icons.remove,
+                  onTap: widget.onMinus,
                 ),
-                const SizedBox(width: 4),
-                // Info
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.product["name"],
-                        style: TextStyle(
-                            fontSize: 13,
-                            color: textColor,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        widget.product["details"] ?? '',
-                        style: TextStyle(fontSize: 10, color: subTextColor),
-                      ),
-                      const SizedBox(height: 3),
-                      Text.rich(TextSpan(children: [
-                        TextSpan(
-                          text: widget.product["totalPrice"].toString(),
-                          style: TextStyle(
-                              fontSize: 13,
-                              fontWeight: FontWeight.bold,
-                              color: primaryColor),
-                        ),
-                        TextSpan(
-                          text: " IQD",
-                          style: TextStyle(fontSize: 10, color: subTextColor),
-                        )
-                      ])),
-                    ],
-                  ),
-                ),
-                // Quantity controls
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
-                  child: Row(
-                    children: [
-                      _QtyButton(
-                        icon: Icons.remove,
-                        onTap: widget.onMinus,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8),
-                        child: Text(
-                          widget.product["quantity"].toString(),
-                          style: TextStyle(
-                              color: textColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      _QtyButton(
-                        icon: Icons.add,
-                        onTap: widget.onPlus,
-                      ),
-                    ],
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Text(
+                    widget.product["quantity"].toString(),
+                    style: TextStyle(
+                        color: textColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold),
                   ),
+                ),
+                _QtyButton(
+                  icon: Icons.add,
+                  onTap: widget.onPlus,
                 ),
               ],
             ),
-          );
+          ),
+        ],
+      ),
+    );
   }
 }
 

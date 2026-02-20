@@ -5,9 +5,8 @@ import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/orders_p
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/signout_massege.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/utils/data.dart';
+import 'package:minimart/services/user_service.dart';
 import 'package:minimart/widgits/Item_Lests/custom_list_tile.dart';
-import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -84,7 +83,8 @@ class _AccountpageState extends State<Accountpage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        currentUser["username"]?.toString() ?? "Guest",
+                        UserService().currentUser["username"]?.toString() ??
+                            "Guest",
                         style: TextStyle(
                             color: textColor,
                             fontSize: 20,
@@ -92,9 +92,9 @@ class _AccountpageState extends State<Accountpage> {
                             fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 4),
-                      if (currentUser["email"] != null)
+                      if (UserService().currentUser["email"] != null)
                         Text(
-                          currentUser["email"],
+                          UserService().currentUser["email"],
                           style: TextStyle(
                             color: subTextColor,
                             fontSize: 13,

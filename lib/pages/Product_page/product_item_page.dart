@@ -1,5 +1,5 @@
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/widgits/Functions/adding_item.dart';
+import 'package:minimart/services/cart_service.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:minimart/widgits/categorycard/category_text.dart';
@@ -142,7 +142,7 @@ class ProductItem extends StatelessWidget {
             ),
             child: ElevatedButton.icon(
               onPressed: () {
-                addToBasket(context, product);
+                CartService().addToCart(product);
                 CustomSnackbar(
                     primaryColor, context, "Added to your basket 🛒");
               },

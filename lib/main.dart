@@ -2,9 +2,23 @@
 import 'package:minimart/pages/Authotication/login_page.dart';
 import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/colors.dart';
+import 'package:minimart/services/storage_service.dart';
+import 'package:minimart/services/user_service.dart';
+import 'package:minimart/services/cart_service.dart';
+import 'package:minimart/services/order_service.dart';
+import 'package:minimart/services/notification_service.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize persistence services
+  await StorageService().init();
+  UserService().init();
+  CartService().init();
+  OrderService().init();
+  NotificationService().init();
+
   runApp(const BnchinaMartApp());
 }
 

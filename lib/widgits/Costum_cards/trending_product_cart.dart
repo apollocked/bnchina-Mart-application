@@ -1,5 +1,6 @@
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/widgits/Functions/adding_item.dart';
+import 'package:minimart/services/cart_service.dart';
+import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:minimart/pages/Product_page/product_item_page.dart';
 import 'package:flutter/material.dart';
 
@@ -55,7 +56,9 @@ class ProductCard extends StatelessWidget {
                     bottom: 8,
                     child: GestureDetector(
                       onTap: () {
-                        addToBasket(context, product);
+                        CartService().addToCart(product);
+                        CustomSnackbar(
+                            primaryColor, context, "Added to your basket 🛒");
                       },
                       child: Container(
                         width: 30,

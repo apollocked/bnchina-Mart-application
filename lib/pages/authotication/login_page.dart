@@ -3,6 +3,7 @@ import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';
+import 'package:minimart/services/user_service.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_banner.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_textfeild.dart';
 
@@ -26,7 +27,7 @@ class LoginPage extends StatelessWidget {
     bool isLogin = false;
     for (var element in accounts) {
       if (element['email'] == email && element['password'] == password) {
-        currentUser = element;
+        UserService().login(email!, password!);
 
         isLogin = true;
         break;

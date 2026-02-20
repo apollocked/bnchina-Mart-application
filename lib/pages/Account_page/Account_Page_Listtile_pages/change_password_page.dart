@@ -4,6 +4,7 @@ import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';
+import 'package:minimart/services/user_service.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_snackBar.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_textfeild.dart';
@@ -35,20 +36,21 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       return;
     }
 
-    if (currentUser["password"] == againpassword && againpassword == password) {
+    if (UserService().currentUser["password"] == againpassword &&
+        againpassword == password) {
       CustomSnackbar(errorColor, context, "you cant use an old password");
 
       isval = false;
       return;
     } else {
       for (var element in accounts) {
-        if (element["username"] == currentUser["username"]) {
+        if (element["username"] == UserService().currentUser["username"]) {
           element["password"] = againpassword;
-          currentUser["password"] = againpassword;
         }
       }
+      UserService().updatePassword(againpassword!);
     }
-    if (currentUser["password"] == againpassword) {
+    if (UserService().currentUser["password"] == againpassword) {
       Navigator.pop(context, MaterialPageRoute(builder: (context) {
         return const LayoutPage();
       }));
@@ -104,7 +106,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                               if (value.length <= 7) {
                                 return "it must be more than 8 chars";
                               }
-                              if (currentUser["password"] != value) {
+                              if (UserService().currentUser["password"] !=
+                                  value) {
                                 return "Wrong password";
                               }
 

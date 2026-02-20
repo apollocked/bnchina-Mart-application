@@ -1,8 +1,9 @@
-import 'package:minimart/utils/colors.dart';
-import 'package:minimart/utils/data.dart';
 import 'package:flutter/material.dart';
+import 'package:minimart/services/notification_service.dart';
+import 'package:minimart/utils/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
+import 'package:minimart/utils/data.dart';
 
 class NotificationsPage extends StatefulWidget {
   const NotificationsPage({super.key});
@@ -59,7 +60,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final unreadCount = notifications.where((n) => n["isRead"] == false).length;
+    int unreadCount = NotificationService().unreadCount;
+    final notifications = NotificationService().notifications;
 
     return Scaffold(
       backgroundColor: backgroundColor,
@@ -139,12 +141,12 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   notif: notif,
                   onTap: () {
                     setState(() {
-                      notif["isRead"] = true;
+                      NotificationService().markAsRead(index);
                     });
                   },
                   onDismiss: () {
                     setState(() {
-                      notifications.removeAt(index);
+                      NotificationService().removeNotification(index);
                     });
                   },
                   iconData: _iconForType(notif["type"]),

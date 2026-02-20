@@ -2,7 +2,7 @@
 
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
-import 'package:minimart/utils/data.dart';
+import 'package:minimart/services/order_service.dart';
 import 'package:minimart/widgits/Custom_Widget/custom_appbar.dart';
 import 'package:minimart/widgits/Item_Lests/orders_vertical_list.dart';
 import 'package:flutter/material.dart';
@@ -46,14 +46,14 @@ class _OrdersPageState extends State<OrdersPage> {
                       )
                     ],
                   )),
-              orders.isNotEmpty
+              OrderService().orders.isNotEmpty
                   ? ListView.builder(
-                      itemCount: orders.length,
+                      itemCount: OrderService().orders.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (BuildContext context, item) {
                         return OrdersVerticalList(
-                          orders: orders[item],
+                          orders: OrderService().orders[item],
                         );
                       })
                   : Container(
