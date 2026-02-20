@@ -1,2 +1,9 @@
 dist/
 build/
+.dart_tool/
+.idea/
+.vscode/
+.DS_Store
+.env 
+.env.example 
+

@@ -23,104 +23,130 @@ class _BasketCardState extends State<BasketCard> {
         ? Container()
         : Container(
             width: double.infinity,
-            height: 80,
-            margin: const EdgeInsets.all(4),
-            padding: const EdgeInsets.all(3),
+            height: 84,
+            margin: const EdgeInsets.symmetric(vertical: 5),
             decoration: BoxDecoration(
-                color: darkGreyColor, borderRadius: BorderRadius.circular(8)),
+              color: surfaceColor,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(
+                color: primaryColor.withOpacity(0.12),
+                width: 1,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.18),
+                  blurRadius: 8,
+                  offset: const Offset(0, 3),
+                ),
+              ],
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Center(
-                      child: Container(
-                        margin: const EdgeInsets.all(3),
-                        decoration: BoxDecoration(
-                            color: backgroundColor,
-                            borderRadius: BorderRadius.circular(8)),
-                        height: 75,
-                        width: 75,
-                        child: Image.asset(widget.product["imgPath"]),
+                // Image
+                Container(
+                  margin: const EdgeInsets.all(8),
+                  width: 68,
+                  height: 68,
+                  decoration: BoxDecoration(
+                    color: backgroundColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(widget.product["imgPath"],
+                      fit: BoxFit.contain),
+                ),
+                const SizedBox(width: 4),
+                // Info
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.product["name"],
+                        style: TextStyle(
+                            fontSize: 13,
+                            color: textColor,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 3,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.product["name"],
+                      const SizedBox(height: 2),
+                      Text(
+                        widget.product["details"] ?? '',
+                        style: TextStyle(fontSize: 10, color: subTextColor),
+                      ),
+                      const SizedBox(height: 3),
+                      Text.rich(TextSpan(children: [
+                        TextSpan(
+                          text: widget.product["totalPrice"].toString(),
                           style: TextStyle(
-                              fontSize: 15,
-                              color: textColor,
+                              fontSize: 13,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'popins'),
+                              color: primaryColor),
                         ),
-                        Text(
-                          widget.product["details"],
+                        TextSpan(
+                          text: " IQD",
+                          style: TextStyle(fontSize: 10, color: subTextColor),
+                        )
+                      ])),
+                    ],
+                  ),
+                ),
+                // Quantity controls
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Row(
+                    children: [
+                      _QtyButton(
+                        icon: Icons.remove,
+                        onTap: widget.onMinus,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        child: Text(
+                          widget.product["quantity"].toString(),
                           style: TextStyle(
-                              fontSize: 10,
-                              fontFamily: 'popins',
                               color: textColor,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
-                        Text.rich(
-                          TextSpan(children: [
-                            TextSpan(
-                              text: widget.product["totalPrice"].toString(),
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: 'popins',
-                                  color: textColor),
-                            ),
-                            TextSpan(
-                              text: " IQD",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  fontFamily: 'popins',
-                                  color: textColor),
-                            )
-                          ]),
-                        ),
-                      ],
-                    ),
-                  ],
+                      ),
+                      _QtyButton(
+                        icon: Icons.add,
+                        onTap: widget.onPlus,
+                      ),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                    height: 30,
-                    child: Row(
-                      children: [
-                        FloatingActionButton(
-                          heroTag: "basket m ${widget.product["imgPath"]}",
-                          onPressed: widget.onMinus,
-                          backgroundColor: primaryColor,
-                          shape: const CircleBorder(),
-                          child: Icon(
-                            Icons.remove,
-                            size: 19,
-                            color: inblack,
-                          ),
-                        ),
-                        Text(widget.product["quantity"].toString()),
-                        FloatingActionButton(
-                          heroTag: "basket p ${widget.product["imgPath"]}",
-                          onPressed: widget.onPlus,
-                          backgroundColor: primaryColor,
-                          shape: const CircleBorder(),
-                          child: Icon(
-                            Icons.add,
-                            size: 19,
-                            color: inblack,
-                          ),
-                        ),
-                      ],
-                    ))
               ],
             ),
           );
+  }
+}
+
+class _QtyButton extends StatelessWidget {
+  const _QtyButton({required this.icon, required this.onTap});
+  final IconData icon;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 28,
+        height: 28,
+        decoration: BoxDecoration(
+          gradient: primaryGradient,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: primaryColor.withOpacity(0.35),
+              blurRadius: 6,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Icon(icon, color: Colors.black, size: 16),
+      ),
+    );
   }
 }

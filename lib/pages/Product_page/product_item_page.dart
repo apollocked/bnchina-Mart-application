@@ -9,93 +9,158 @@ import 'package:flutter/material.dart';
 class ProductItem extends StatelessWidget {
   ProductItem({super.key, required this.product});
   Map<String, dynamic> product;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: customAppBar(),
         backgroundColor: backgroundColor,
-        body: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AspectRatio(
-                aspectRatio: 1 / 1,
-                child: Container(
-                  alignment: Alignment.center,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Hero product image
+                Container(
                   width: double.infinity,
+                  height: 280,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: darkGreyColor),
-                  child: Image.asset(
-                    product["imgPath"],
-                    height: 150,
-                    fit: BoxFit.cover,
+                    borderRadius: BorderRadius.circular(20),
+                    color: surfaceColor,
+                    border: Border.all(
+                      color: primaryColor.withOpacity(0.15),
+                      width: 1,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.25),
+                        blurRadius: 16,
+                        offset: const Offset(0, 6),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Stack(
+                      children: [
+                        // Subtle gradient overlay bottom
+                        Positioned.fill(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  backgroundColor.withOpacity(0.3),
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Center(
+                          child: Image.asset(
+                            product["imgPath"],
+                            height: 180,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              CategoryText(category: product["category"]),
-              const SizedBox(
-                height: 15,
-              ),
-              Text(
-                product["name"],
-                style: TextStyle(
-                    fontFamily: 'popins', color: textColor, fontSize: 25),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                product["details"],
-                style: TextStyle(
-                    fontSize: 18, fontFamily: 'popins', color: textColor),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text.rich(
-                TextSpan(children: [
-                  TextSpan(
-                    text: product["price"].toString(),
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'popins',
-                        color: textColor),
-                  ),
-                  TextSpan(
-                    text: " IQD",
-                    style: TextStyle(
-                        fontSize: 15, fontFamily: 'popins', color: textColor),
-                  )
-                ]),
-              ),
-            ],
+                const SizedBox(height: 20),
+
+                // Category badge
+                CategoryText(category: product["category"]),
+                const SizedBox(height: 12),
+
+                // Product name
+                Text(
+                  product["name"],
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      color: textColor,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+
+                // Details
+                Text(
+                  product["details"],
+                  style: TextStyle(
+                      fontSize: 14,
+                      fontFamily: 'Poppins',
+                      color: subTextColor,
+                      height: 1.5),
+                ),
+                const SizedBox(height: 16),
+
+                // Price
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      product["price"].toString(),
+                      style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor),
+                    ),
+                    const SizedBox(width: 4),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 4),
+                      child: Text(
+                        "IQD",
+                        style: TextStyle(fontSize: 16, color: subTextColor),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 90), // space for bottom button
+              ],
+            ),
           ),
         ),
         bottomSheet: Container(
           color: backgroundColor,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
-            child: ElevatedButton(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          child: Container(
+            height: 54,
+            decoration: BoxDecoration(
+              gradient: primaryGradient,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: primaryColor.withOpacity(0.4),
+                  blurRadius: 14,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
+            child: ElevatedButton.icon(
               onPressed: () {
                 addToBasket(context, product);
-                CustomSnackbar(primaryColor, context, "added to your basket");
+                CustomSnackbar(
+                    primaryColor, context, "Added to your basket 🛒");
               },
               style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                minimumSize: const Size(double.infinity, 54),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5)),
-                minimumSize: const Size(double.infinity, 50),
-                backgroundColor: primaryColor,
+                    borderRadius: BorderRadius.circular(16)),
               ),
-              child: Text(
-                "Add to basket",
+              icon: Icon(Icons.shopping_basket_rounded,
+                  color: blackColor, size: 20),
+              label: Text(
+                "Add to Basket",
                 style: TextStyle(
-                    color: inblack, fontSize: 22, fontWeight: FontWeight.bold),
+                    color: blackColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),

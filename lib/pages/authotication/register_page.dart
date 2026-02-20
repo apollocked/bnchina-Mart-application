@@ -44,26 +44,26 @@ class SignUpPage extends StatelessWidget {
               const CustomBanner(),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    const EdgeInsets.symmetric(horizontal: 28, vertical: 20),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
                     Text(
-                      "Start Now",
-                      style: TextStyle(fontSize: 10, color: textColor),
+                      "Create your account 🛒",
+                      style: TextStyle(
+                          color: subTextColor,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400),
                     ),
+                    const SizedBox(height: 4),
                     Text(
-                      "Wellcome ",
+                      "Sign Up",
                       style: TextStyle(
                           color: textColor,
-                          fontSize: 32,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    const SizedBox(height: 24),
                     Form(
                         key: _form,
                         child: Column(
@@ -72,7 +72,7 @@ class SignUpPage extends StatelessWidget {
                                 onvalidad: (value) {
                                   if (value == null || value.isEmpty) {
                                     isval = false;
-                                    return "username is required";
+                                    return "Username is required";
                                   }
 
                                   isval = true;
@@ -83,18 +83,16 @@ class SignUpPage extends StatelessWidget {
                                 },
                                 path: usernameIcon,
                                 name: "Username"),
-                            const SizedBox(
-                              height: 10,
-                            ),
+                            const SizedBox(height: 14),
                             CustomField(
                                 onvalidad: (value) {
                                   if (value == null || value.isEmpty) {
                                     isval = false;
-                                    return "email is required";
+                                    return "Email is required";
                                   }
                                   if (!value.contains('@')) {
                                     isval = false;
-                                    return 'email is not validate';
+                                    return 'Please enter a valid email';
                                   }
                                   if (isval) {
                                     isval = true;
@@ -107,14 +105,14 @@ class SignUpPage extends StatelessWidget {
                                 },
                                 path: emailIcon,
                                 name: "Email"),
-                            const SizedBox(height: 10),
+                            const SizedBox(height: 14),
                             CustomField(
                                 onvalidad: (value) {
                                   if (value == null || value.isEmpty) {
-                                    return "password is required";
+                                    return "Password is required";
                                   }
                                   if (value.length <= 7) {
-                                    return "it must be more than 8 chars";
+                                    return "Password must be at least 8 characters";
                                   }
                                   if (isval) {
                                     isval = true;
@@ -125,36 +123,52 @@ class SignUpPage extends StatelessWidget {
                                 onsave: (newValue) {
                                   password = newValue;
                                 },
+                                obscureText: true,
                                 path: passwordIcon,
                                 name: "Password"),
-                            const SizedBox(
-                              height: 30,
-                            ),
-                            ElevatedButton(
-                              onPressed: () {
-                                login(context);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(13)),
-                                minimumSize: const Size(300, 50),
-                                backgroundColor: primaryColor,
+                            const SizedBox(height: 30),
+                            // Gradient Sign Up Button
+                            Container(
+                              width: double.infinity,
+                              height: 54,
+                              decoration: BoxDecoration(
+                                gradient: primaryGradient,
+                                borderRadius: BorderRadius.circular(16),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: primaryColor.withOpacity(0.35),
+                                    blurRadius: 14,
+                                    offset: const Offset(0, 6),
+                                  ),
+                                ],
                               ),
-                              child: Text(
-                                "Sign Up",
-                                style: TextStyle(
-                                    color: whiteColor,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  login(context);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  shadowColor: Colors.transparent,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(16)),
+                                ),
+                                child: Text(
+                                  "Create Account",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
+                            const SizedBox(height: 20),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  "Already have account?",
-                                  style:
-                                      TextStyle(fontSize: 10, color: textColor),
+                                  "Already have an account?",
+                                  style: TextStyle(
+                                      fontSize: 13, color: subTextColor),
                                 ),
                                 TextButton(
                                   onPressed: () {
@@ -167,7 +181,7 @@ class SignUpPage extends StatelessWidget {
                                     "Login",
                                     style: TextStyle(
                                         color: primaryColor,
-                                        fontSize: 15,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),

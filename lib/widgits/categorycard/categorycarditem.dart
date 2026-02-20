@@ -18,62 +18,61 @@ class CategoryItem extends StatelessWidget {
         }));
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 0.1, horizontal: 8),
+        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
         decoration: BoxDecoration(
-            color: darkGreyColor, borderRadius: BorderRadius.circular(10)),
+          color: surfaceColor,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: primaryColor.withOpacity(0.15),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 8,
+              offset: const Offset(0, 3),
+            ),
+          ],
+        ),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   categories['name'],
                   style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontFamily: 'popins',
-                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
                       color: textColor),
                 ),
+                const SizedBox(height: 4),
                 if (categories["discount"] != 0)
                   Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 6, vertical: 5),
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(11),
-                        color: primaryColor),
-                    child: Row(
-                      children: [
-                        Text(
-                          categories["discount"].toString(),
-                          style: TextStyle(fontSize: 10, color: inblack),
-                        ),
-                        Text(
-                          "% discount",
-                          style: TextStyle(fontSize: 12, color: inblack),
-                        ),
-                      ],
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: primaryGradient),
+                    child: Text(
+                      "${categories["discount"]}% off",
+                      style: TextStyle(
+                          fontSize: 10,
+                          color: blackColor,
+                          fontWeight: FontWeight.bold),
                     ),
                   )
-                else
-                  (Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ))
               ],
             ),
-            const Spacer(
-              flex: 3,
-            ),
+            const Spacer(),
             Image.asset(
               categories["imgPath"],
               fit: BoxFit.contain,
-              height: 50,
-              width: 65,
+              height: 52,
+              width: 60,
             )
           ],
         ),

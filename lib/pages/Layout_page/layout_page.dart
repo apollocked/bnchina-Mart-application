@@ -29,45 +29,81 @@ class _LayoutPageState extends State<LayoutPage> {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: customAppBar(),
-      body:
-          Padding(padding: const EdgeInsets.all(10), child: pages[slectedpage]),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: slectedpage,
-        backgroundColor: backgroundColor,
-        showSelectedLabels: true,
-        selectedIconTheme: IconThemeData(color: primaryColor),
-        selectedLabelStyle:
-            TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
-        selectedItemColor: primaryColor,
-        unselectedItemColor: textColor,
-        onTap: (index) {
-          setState(() {
-            slectedpage = index;
-          });
-        },
-        items: [
-          // ignore: deprecated_member_use
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                homeIcon,
-                color: slectedpage == 0 ? primaryColor : textColor,
-              ),
-              label: "Home"),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                basketIcon
-                // ignore: deprecated_member_use
-                ,
-                color: slectedpage == 1 ? primaryColor : textColor,
-              ),
-              label: "Basket"),
-          const BottomNavigationBarItem(
-              icon: CircleAvatar(
-                maxRadius: 15,
-                backgroundImage: AssetImage(avatarBoy),
-              ),
-              label: "account")
-        ],
+      body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          child: pages[slectedpage]),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: surfaceColor,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.3),
+              blurRadius: 16,
+              offset: const Offset(0, -4),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
+          ),
+          child: BottomNavigationBar(
+            currentIndex: slectedpage,
+            backgroundColor: surfaceColor,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            selectedIconTheme: IconThemeData(color: primaryColor),
+            selectedLabelStyle: TextStyle(
+                color: primaryColor, fontWeight: FontWeight.bold, fontSize: 11),
+            unselectedLabelStyle: TextStyle(color: subTextColor, fontSize: 11),
+            selectedItemColor: primaryColor,
+            unselectedItemColor: subTextColor,
+            elevation: 0,
+            onTap: (index) {
+              setState(() {
+                slectedpage = index;
+              });
+            },
+            items: [
+              // ignore: deprecated_member_use
+              BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: SvgPicture.asset(
+                      homeIcon,
+                      color: slectedpage == 0 ? primaryColor : subTextColor,
+                      height: 22,
+                    ),
+                  ),
+                  label: "Home"),
+              BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: SvgPicture.asset(
+                      basketIcon,
+                      // ignore: deprecated_member_use
+                      color: slectedpage == 1 ? primaryColor : subTextColor,
+                      height: 22,
+                    ),
+                  ),
+                  label: "Basket"),
+              const BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.only(bottom: 4),
+                    child: CircleAvatar(
+                      maxRadius: 14,
+                      backgroundImage: AssetImage(avatarBoy),
+                    ),
+                  ),
+                  label: "Account"),
+            ],
+          ),
+        ),
       ),
     );
   }

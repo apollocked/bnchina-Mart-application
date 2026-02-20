@@ -14,91 +14,145 @@ class Accountpage extends StatelessWidget {
   const Accountpage({super.key});
 
   Future<void> _refreshUserData(BuildContext context) async {
-    // Simulate a network call or data fetch
-    await Future.delayed(const Duration(seconds: 2));
-    // Here you would typically fetch new user data and update the state
-    // For this example, we'll just print to console
+    await Future.delayed(const Duration(seconds: 1));
   }
 
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () => _refreshUserData(context),
-      color: primaryColor, // Optional: match your theme color
-      backgroundColor: backgroundColor, // Optional: match your theme
+      color: primaryColor,
+      backgroundColor: surfaceColor,
       child: ListView(
         children: [
-          const SizedBox(
-            height: 20,
-          ),
-          Center(
-            child: Column(
+          const SizedBox(height: 10),
+
+          // ── Profile Header Card ─────────────────────────────────────────
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [Color(0xff0A2436), Color(0xff1A3B45)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: primaryColor.withOpacity(0.2),
+                width: 1,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.3),
+                  blurRadius: 16,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
+            child: Row(
               children: [
-                const CircleAvatar(
-                  backgroundImage: AssetImage(avatarBoy),
-                  radius: 50,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  currentUser["username"]?.toString() ?? "Guest",
-                  style: TextStyle(
-                      color: primaryColor,
-                      fontSize: 20,
-                      fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold),
-                ),
-                if (currentUser["email"] != null)
-                  Text(
-                    currentUser["email"],
-                    style: TextStyle(
-                      color: Colors.grey[600],
-                      fontSize: 14,
-                    ),
+                // Avatar with glow ring
+                Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: primaryGradient,
+                    boxShadow: [
+                      BoxShadow(
+                        color: primaryColor.withOpacity(0.4),
+                        blurRadius: 12,
+                        spreadRadius: 2,
+                      ),
+                    ],
                   ),
+                  child: const CircleAvatar(
+                    backgroundImage: AssetImage(avatarBoy),
+                    radius: 40,
+                  ),
+                ),
+                const SizedBox(width: 16),
+                // Name + email
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        currentUser["username"]?.toString() ?? "Guest",
+                        style: TextStyle(
+                            color: textColor,
+                            fontSize: 20,
+                            fontFamily: "Poppins",
+                            fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      if (currentUser["email"] != null)
+                        Text(
+                          currentUser["email"],
+                          style: TextStyle(
+                            color: subTextColor,
+                            fontSize: 13,
+                          ),
+                        ),
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          gradient: primaryGradient,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          "Premium Member",
+                          style: TextStyle(
+                              color: blackColor,
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
-          const SizedBox(
-            height: 30,
-          ),
+          const SizedBox(height: 20),
+
+          // ── Menu Tiles ──────────────────────────────────────────────────
           CustomTile(
-              text: "Orders",
-              icon: SvgPicture.asset(
-                basketIcon,
-                color: primaryColor,
-              ),
+              text: "My Orders",
+              icon: SvgPicture.asset(basketIcon, color: primaryColor),
               ontap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => OrdersPage()));
               }),
           CustomTile(
-              text: "Change password",
-              icon: Icon(
-                Icons.password_sharp,
-                color: primaryColor,
-              ),
+              text: "Change Password",
+              icon: Icon(Icons.lock_outline_rounded, color: primaryColor),
               ontap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const ChangePasswordPage();
                 }));
               }),
           CustomTile(
-            text: "Notfications",
-            icon: SvgPicture.asset(
-              notificationIcon,
-              color: primaryColor,
-            ),
+            text: "Notifications",
+            icon: SvgPicture.asset(notificationIcon, color: primaryColor),
             ontap: () {
-              CustomSnackbar(errorColor, context, "we still are working on it");
+              CustomSnackbar(
+                  errorColor, context, "We're still working on this 🚧");
             },
           ),
           CustomTile(
-            text: "Coupons",
+            text: "Coupons & Discounts",
             icon: SvgPicture.asset(starIcon, color: primaryColor),
             ontap: () {
               showModalBottomSheet(
                   isScrollControlled: true,
-                  backgroundColor: backgroundColor,
+                  backgroundColor: surfaceColor,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(24)),
+                  ),
                   context: context,
                   builder: (context) {
                     return const DiscountPage();
@@ -106,16 +160,14 @@ class Accountpage extends StatelessWidget {
             },
           ),
           CustomTile(
-            text: "Signout",
-            icon: SvgPicture.asset(
-              signoutIcon,
-              color: primaryColor,
-            ),
+            text: "Sign Out",
+            icon: SvgPicture.asset(signoutIcon, color: errorColor),
             ontap: () {
               showDialog(
                   context: context, builder: (context) => SignoutMassege());
             },
           ),
+          const SizedBox(height: 16),
         ],
       ),
     );

@@ -5,93 +5,107 @@ import 'package:flutter/material.dart';
 class VerticalListcard extends StatelessWidget {
   const VerticalListcard({super.key, required this.product});
   final Map<String, dynamic> product;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 80,
-      margin: const EdgeInsets.all(4),
-      padding: const EdgeInsets.all(3),
+      height: 82,
+      margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-          color: darkGreyColor, borderRadius: BorderRadius.circular(8)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                      color: backgroundColor,
-                      borderRadius: BorderRadius.circular(8)),
-                  height: 75,
-                  width: 75,
-                  child: Image.asset(product["imgPath"]),
-                ),
-              ),
-              const SizedBox(
-                width: 3,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product["name"],
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: textColor,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'popins'),
-                  ),
-                  Text(
-                    product["details"],
-                    style: TextStyle(
-                        fontSize: 10,
-                        fontFamily: 'popins',
-                        color: textColor,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text.rich(
-                    TextSpan(children: [
-                      TextSpan(
-                        text: product["price"].toString(),
-                        style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'popins',
-                            color: textColor),
-                      ),
-                      TextSpan(
-                        text: " IQD",
-                        style: TextStyle(
-                            fontSize: 10,
-                            fontFamily: 'popins',
-                            color: textColor),
-                      )
-                    ]),
-                  ),
-                ],
-              ),
-            ],
+        color: surfaceColor,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: primaryColor.withOpacity(0.12),
+          width: 1,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.18),
+            blurRadius: 8,
+            offset: const Offset(0, 3),
           ),
-          SizedBox(
-            height: 30,
-            child: FloatingActionButton(
-              heroTag: "vertical ${product["imgPath"]}",
-              onPressed: () {
+        ],
+      ),
+      child: Row(
+        children: [
+          // Product image
+          Container(
+            margin: const EdgeInsets.all(8),
+            width: 66,
+            height: 66,
+            decoration: BoxDecoration(
+              color: backgroundColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Image.asset(product["imgPath"], fit: BoxFit.contain),
+          ),
+          const SizedBox(width: 4),
+          // Product info
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product["name"],
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: textColor,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  product["details"],
+                  style: TextStyle(
+                      fontSize: 11,
+                      color: subTextColor,
+                      fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(height: 3),
+                Text.rich(
+                  TextSpan(children: [
+                    TextSpan(
+                      text: product["price"].toString(),
+                      style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.bold,
+                          color: primaryColor),
+                    ),
+                    TextSpan(
+                      text: " IQD",
+                      style: TextStyle(fontSize: 11, color: subTextColor),
+                    )
+                  ]),
+                ),
+              ],
+            ),
+          ),
+          // Add button
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: GestureDetector(
+              onTap: () {
                 addToBasket(context, product);
               },
-              backgroundColor: primaryColor,
-              shape: const CircleBorder(),
-              child: Icon(
-                Icons.add,
-                size: 19,
-                color: inblack,
+              child: Container(
+                width: 32,
+                height: 32,
+                decoration: BoxDecoration(
+                  gradient: primaryGradient,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: primaryColor.withOpacity(0.35),
+                      blurRadius: 8,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Icon(Icons.add, color: blackColor, size: 18),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

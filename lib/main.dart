@@ -1,8 +1,9 @@
 // ignore: unused_import
+import 'package:minimart/pages/Authotication/login_page.dart';
 import 'package:minimart/pages/Layout_page/layout_page.dart';
-import 'package:minimart/pages/authotication/login_page.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:minimart/utils/data.dart';
 
 void main() {
   runApp(const BnchinaMartApp());
@@ -14,12 +15,18 @@ class BnchinaMartApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Mini store App',
+        title: 'BnChina Mart',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: "Poppins",
-          colorScheme: ColorScheme.fromSeed(seedColor: backgroundColor),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: primaryColor,
+            brightness: Brightness.dark,
+            primary: primaryColor,
+            surface: surfaceColor,
+          ),
           useMaterial3: true,
+          scaffoldBackgroundColor: backgroundColor,
         ),
         home: LoginPage());
   }

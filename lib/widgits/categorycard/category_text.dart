@@ -6,19 +6,30 @@ class CategoryText extends StatelessWidget {
   CategoryText({super.key, required this.category});
   // ignore: prefer_typing_uninitialized_variables, strict_top_level_inference
   var category;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(20),
+        gradient: LinearGradient(
+          colors: [
+            primaryColor.withOpacity(0.2),
+            accentColor.withOpacity(0.1),
+          ],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
         border: Border.all(
-          color: primaryColor,
+          color: primaryColor.withOpacity(0.4),
+          width: 1,
         ),
       ),
       child: Text(
         category,
-        style: TextStyle(color: primaryColor),
+        style: TextStyle(
+            color: primaryColor, fontSize: 12, fontWeight: FontWeight.w600),
       ),
     );
   }

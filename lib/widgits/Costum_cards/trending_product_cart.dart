@@ -17,73 +17,102 @@ class ProductCard extends StatelessWidget {
         }));
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        height: 70,
+        margin: const EdgeInsets.only(right: 4),
+        width: 155,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: 140,
-              width: 150,
+              width: 155,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: darkGreyColor),
+                borderRadius: BorderRadius.circular(16),
+                color: surfaceColor,
+                border: Border.all(
+                  color: primaryColor.withOpacity(0.12),
+                  width: 1,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    blurRadius: 10,
+                    offset: const Offset(0, 4),
+                  ),
+                ],
+              ),
               child: Stack(
                 children: [
                   Align(
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.center,
                     child: Image.asset(
                       product["imgPath"],
-                      height: 80,
+                      height: 90,
                       fit: BoxFit.contain,
                     ),
                   ),
                   Positioned(
-                      right: 0,
-                      bottom: 0,
-                      child: FloatingActionButton.small(
-                        heroTag: "${product['imgPath']}",
-                        onPressed: () {
-                          addToBasket(context, product);
-                        },
-                        backgroundColor: primaryColor,
-                        shape: const CircleBorder(),
-                        child: Icon(
-                          Icons.add,
-                          color: inblack,
+                    right: 8,
+                    bottom: 8,
+                    child: GestureDetector(
+                      onTap: () {
+                        addToBasket(context, product);
+                      },
+                      child: Container(
+                        width: 30,
+                        height: 30,
+                        decoration: BoxDecoration(
+                          gradient: primaryGradient,
+                          shape: BoxShape.circle,
+                          boxShadow: [
+                            BoxShadow(
+                              color: primaryColor.withOpacity(0.4),
+                              blurRadius: 8,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
                         ),
-                      ))
+                        child: Icon(Icons.add, color: blackColor, size: 18),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 2,
-            ),
-            Text(
-              product["name"],
-              style: TextStyle(
-                  color: textColor, fontSize: 18, fontWeight: FontWeight.w900),
-            ),
-            Text.rich(TextSpan(
-              children: [
-                TextSpan(
-                  text: "${product["price"]}",
-                  style: TextStyle(
-                      color: textColor,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w900),
-                ),
-                TextSpan(children: [
-                  TextSpan(
-                    text: " IQD",
+            const SizedBox(height: 8),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product["name"],
                     style: TextStyle(
-                        color: darkGreyColor,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w900),
+                        color: textColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
                   ),
-                ]),
-              ],
-            )),
+                  const SizedBox(height: 2),
+                  Text.rich(TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "${product["price"]}",
+                        style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      TextSpan(
+                        text: " IQD",
+                        style: TextStyle(
+                            color: subTextColor,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  )),
+                ],
+              ),
+            ),
           ],
         ),
       ),
