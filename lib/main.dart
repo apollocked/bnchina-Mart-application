@@ -3,7 +3,6 @@ import 'package:minimart/pages/Authotication/login_page.dart';
 import 'package:minimart/pages/Layout_page/layout_page.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:minimart/utils/data.dart';
 
 void main() {
   runApp(const BnchinaMartApp());
@@ -28,6 +27,6 @@ class BnchinaMartApp extends StatelessWidget {
           useMaterial3: true,
           scaffoldBackgroundColor: backgroundColor,
         ),
-        home: LoginPage());
+        home: LayoutPage());
   }
 }

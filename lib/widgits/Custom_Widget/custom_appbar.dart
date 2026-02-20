@@ -1,4 +1,4 @@
-import 'package:minimart/pages/notifications_page.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/notifications_page.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/utils/data.dart';
 import 'package:flutter/material.dart';

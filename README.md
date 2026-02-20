@@ -70,10 +70,10 @@ A feature-rich mobile e-commerce application built with Flutter, allowing users 
 
 ### 👤 Account Management
 - **User Profile** - Display username and email
-- **Avatar Display** - User avatar in account section
+- **Avatar Display** - User avatar in account section with a premium badge
 - **Orders View** - Quick access to order history
 - **Password Change** - Secure password update with validation
-- **Notifications Placeholder** - Future notifications feature
+- **Notifications System** - Live badge count, swipe-to-dismiss notification cards for purchases and coupons
 - **Coupon Management** - Apply and view active coupons
 - **Logout** - Secure sign-out functionality
 
@@ -148,6 +148,7 @@ mini_mart/
 │   │   │   └── Account_Page_Listtile_pages/
 │   │   │       ├── orders_page.dart      # Order history view
 │   │   │       ├── discount_page.dart    # Coupon code entry
+│   │   │       ├── notifications_page.dart# Notifications hub
 │   │   │       ├── signout_massege.dart  # Logout confirmation
 │   │   ├── Home_page/
 │   │   │   └── home_page.dart            # Main shopping interface
@@ -410,16 +411,16 @@ Display Updated Data
 
 ---
 
-## 🎨 Color Scheme
+## 🎨 Color Scheme (New Premium Dark Theme)
 
 | Color | Hex Code | Usage |
 |-------|----------|-------|
-| Primary Blue | #6495ED | Buttons, highlights, accents |
-| Background | #352F44 | Main background |
-| Dark Grey | #5C5470 | Card backgrounds |
-| Text White | #FFFFFF | Primary text |
-| Error Red | #FF2C2C | Error messages |
-| Order Purple | Custom | Order page accents |
+| Deep Navy | #0D1B2A | Main background |
+| Charcoal | #1A2B3C | Card surfaces, bottom nav, dialogs |
+| Vibrant Emerald | #00C897 | Primary buttons, active icons, highlights |
+| Soft Teal | #00E5C4 | Accents, gradients |
+| Coral Red | #FF5B5B | Errors, delete actions |
+| Muted Blue-Grey | #8FA3B1 | Sub-text, inactive icons |
 
 Located in: `utils/colors.dart`
 
@@ -624,9 +625,9 @@ For issues, questions, or suggestions:
 
 ## 📊 Project Statistics
 
-- **Total Files**: 34
-- **Lines of Code**: ~3,500+
-- **Pages**: 10
+- **Total Files**: 35
+- **Lines of Code**: ~3,800+
+- **Pages**: 11
 - **Custom Widgets**: 14
 - **Products Available**: 15
 - **Categories**: 10
