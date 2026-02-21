@@ -1,5 +1,5 @@
 name: minimart
-description: "A new Flutter project created by muhammed  jammel as his first project in flutter and its full course task of the bnchina academy"
+description: "A professional Flutter shopping application renamed to Mini Mart, built for the BnChina Academy."
 
 publish_to: 'none'
 
@@ -22,6 +22,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/minimart.jpg"
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true

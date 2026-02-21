@@ -2,8 +2,8 @@ const String imagePath = "assets/images/";
 const String iconPath = "assets/icons/";
 
 // Logos
-const String bnchinaMartLogo = "${imagePath}bnchinamartlogo.png";
-const String appLogo = "assets/icons/MiniMartLoGo.png";
+const String miniMartLogo = "${imagePath}bnchinamartlogo.png";
+const String appLogo = "${iconPath}minimart.jpg";
 const String googleLogo = "${imagePath}googlelogo.png";
 
 // Images

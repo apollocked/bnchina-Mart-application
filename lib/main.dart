@@ -19,16 +19,16 @@ void main() async {
   OrderService().init();
   NotificationService().init();
 
-  runApp(const BnchinaMartApp());
+  runApp(const MiniMartApp());
 }
 
-class BnchinaMartApp extends StatelessWidget {
-  const BnchinaMartApp({super.key});
+class MiniMartApp extends StatelessWidget {
+  const MiniMartApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'BnChina Mart',
+        title: 'Mini Mart',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           fontFamily: "Poppins",

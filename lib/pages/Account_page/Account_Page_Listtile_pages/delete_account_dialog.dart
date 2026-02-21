@@ -13,6 +13,7 @@ class _DeleteAccountDialogState extends State<DeleteAccountDialog> {
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
   String _errorMessage = '';
+  bool _obscureText = true;
 
   void _deleteAccount() {
     setState(() {
@@ -68,12 +69,23 @@ class _DeleteAccountDialogState extends State<DeleteAccountDialog> {
           const SizedBox(height: 16),
           TextField(
             controller: _passwordController,
-            obscureText: true,
+            obscureText: _obscureText,
             decoration: InputDecoration(
               hintText: 'Current Password',
               errorText: _errorMessage.isEmpty ? null : _errorMessage,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
+              ),
+              suffixIcon: IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility_off : Icons.visibility,
+                  color: Colors.grey,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
               ),
             ),
           ),

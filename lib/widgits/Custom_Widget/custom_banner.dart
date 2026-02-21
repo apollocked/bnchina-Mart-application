@@ -73,7 +73,7 @@ class CustomBanner extends StatelessWidget {
                 ),
                 const SizedBox(height: 14),
                 Text(
-                  "BnChina Mart",
+                  "Mini Mart",
                   style: TextStyle(
                     color: whiteColor,
                     fontSize: 26,
@@ -91,6 +91,15 @@ class CustomBanner extends StatelessWidget {
                     letterSpacing: 0.5,
                   ),
                 ),
+                Text(
+                  "Unpublised version",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 0.5,
+                  ),
+                )
               ],
             ),
           ),
