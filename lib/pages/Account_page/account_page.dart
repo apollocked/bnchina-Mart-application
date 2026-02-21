@@ -1,4 +1,3 @@
-import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/edit_account_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/discount_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/notifications_page.dart';
@@ -37,7 +36,7 @@ class _AccountpageState extends State<Accountpage> {
           // ── Profile Header Card ─────────────────────────────────────────
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
                 colors: [Color(0xff0A2436), Color(0xff1A3B45)],
@@ -78,65 +77,71 @@ class _AccountpageState extends State<Accountpage> {
                     radius: 40,
                   ),
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: 12),
                 // Name + email
                 Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text(
-                        UserService().currentUser["username"]?.toString() ??
-                            "Guest",
-                        style: TextStyle(
-                            color: textColor,
-                            fontSize: 20,
-                            fontFamily: "Poppins",
-                            fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 4),
-                      if (UserService().currentUser["email"] != null)
-                        Text(
-                          UserService().currentUser["email"],
-                          style: TextStyle(
-                            color: subTextColor,
-                            fontSize: 13,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            UserService().currentUser["username"]?.toString() ??
+                                "Guest",
+                            style: TextStyle(
+                                color: textColor,
+                                fontSize: 20,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.bold),
                           ),
-                        ),
-                      const SizedBox(height: 8),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 4),
-                        decoration: BoxDecoration(
-                          gradient: primaryGradient,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          "Premium Member",
-                          style: TextStyle(
-                              color: blackColor,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold),
+                          const SizedBox(height: 4),
+                          if (UserService().currentUser["email"] != null)
+                            Text(
+                              UserService().currentUser["email"],
+                              style: TextStyle(
+                                color: subTextColor,
+                                fontSize: 13,
+                              ),
+                            ),
+                          const SizedBox(height: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              gradient: primaryGradient,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              "Premium Member",
+                              style: TextStyle(
+                                  color: blackColor,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        onPressed: () async {
+                          final updated = await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const EditAccountPage(),
+                            ),
+                          );
+                          if (updated == true) {
+                            setState(() {});
+                          }
+                        },
+                        icon: Icon(
+                          Icons.edit_rounded,
+                          color: primaryColor,
+                          size: 28,
                         ),
                       ),
                     ],
-                  ),
-                ),
-                IconButton(
-                  onPressed: () async {
-                    final updated = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EditAccountPage(),
-                      ),
-                    );
-                    if (updated == true) {
-                      setState(() {});
-                    }
-                  },
-                  icon: Icon(
-                    Icons.edit_note_rounded,
-                    color: primaryColor,
-                    size: 28,
                   ),
                 ),
               ],
@@ -151,14 +156,6 @@ class _AccountpageState extends State<Accountpage> {
               ontap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => OrdersPage()));
-              }),
-          CustomTile(
-              text: "Change Password",
-              icon: Icon(Icons.lock_outline_rounded, color: primaryColor),
-              ontap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const ChangePasswordPage();
-                }));
               }),
           CustomTile(
             text: "Notifications",

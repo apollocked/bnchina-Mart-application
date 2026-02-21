@@ -1,4 +1,5 @@
 import 'package:minimart/utils/colors.dart';
+import 'package:minimart/utils/assets.dart';
 import 'package:flutter/material.dart';
 
 class CustomBanner extends StatelessWidget {
@@ -65,7 +66,7 @@ class CustomBanner extends StatelessWidget {
                   ),
                   child: ClipOval(
                     child: Image.asset(
-                      "assets/images/yourlogo.jpg",
+                      appLogo,
                       fit: BoxFit.cover,
                     ),
                   ),
