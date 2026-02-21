@@ -26,8 +26,9 @@ A feature-rich mobile e-commerce application built with Flutter, allowing users 
 ### 🔐 Authentication
 - **User Registration** - Create new account with email and password
 - **User Login** - Secure login with email and password validation
-- **Password Management** - Change password functionality
-- **Session Management** - User session persistence during app session
+- **Password Management** - Secure password update with old password verification
+- **Account Deletion** - Permanent account removal with password confirmation
+- **Session Management** - User session persistence using `shared_preferences`
 - **Sign Out** - Secure logout with confirmation dialog
 
 ### 🏠 Home Page
@@ -69,11 +70,12 @@ A feature-rich mobile e-commerce application built with Flutter, allowing users 
 - **Error Handling** - User-friendly messages for invalid coupons
 
 ### 👤 Account Management
-- **User Profile** - Display username and email
-- **Avatar Display** - User avatar in account section with a premium badge
+- **User Profile** - Edit username and email with real-time validation via bottom sheets
+- **Avatar Display** - User premium badge with automatic persistence
 - **Orders View** - Quick access to order history
-- **Password Change** - Secure password update with validation
-- **Notifications System** - Live badge count, swipe-to-dismiss notification cards for purchases and coupons
+- **Password Change** - Integrated secure password update within profile settings
+- **Account Deletion** - Secure account removal option with identity verification
+- **Notifications System** - Live badge count, swipe-to-dismiss notification cards
 - **Coupon Management** - Apply and view active coupons
 - **Logout** - Secure sign-out functionality
 
@@ -92,9 +94,9 @@ A feature-rich mobile e-commerce application built with Flutter, allowing users 
 ## 📸 Screenshots
 
 ### Authentication Screens
-- Login page with email/password validation
-- Registration page for new users
-- Password change confirmation dialog
+- Login and Registration pages with full validation
+- Edit Account dashboard with integrated password settings
+- Secure Password Change and Account Deletion dialogs
 
 ### Home Screen
 - Featured poster/banner
@@ -146,10 +148,12 @@ mini_mart/
 │   │   ├── Account_page/
 │   │   │   ├── account_page.dart         # User account dashboard
 │   │   │   └── Account_Page_Listtile_pages/
+│   │   │       ├── edit_account_page.dart# Profile & password management
 │   │   │       ├── orders_page.dart      # Order history view
 │   │   │       ├── discount_page.dart    # Coupon code entry
 │   │   │       ├── notifications_page.dart# Notifications hub
 │   │   │       ├── signout_massege.dart  # Logout confirmation
+│   │   │       └── delete_account_dialog.dart # Account deletion security
 │   │   ├── Home_page/
 │   │   │   └── home_page.dart            # Main shopping interface
 │   │   ├── Basket_Page/
@@ -317,14 +321,26 @@ Steps:
 
 ### 👤 Account Management
 
-#### Change Password
+#### Edit Profile & Change Password
 ```
 Steps:
 1. Go to Account page
-2. Tap "Change password"
-3. Enter old password
-4. Enter new password (2x)
-5. Confirm change
+2. Click the Edit Icon (top right of profile card)
+3. To Edit Info: Tap "Username" or "Email" tiles
+4. To Change Password:
+   - Tap "Change Password" tile
+   - Enter Old Password for verification
+   - Enter and confirm New Password
+5. All changes persist automatically
+```
+
+#### Delete Account
+```
+Steps:
+1. Go to Account page
+2. Tap "Delete Account" (red tile)
+3. Enter your current password in the dialog
+4. Confirm deletion (Warning: This is permanent!)
 ```
 
 #### View Profile
@@ -381,9 +397,9 @@ Service Method (e.g. CartService().addToCart(product))
    ↓
 Service State Update + notifyListeners()
    ↓
-StorageService (Saves state locally to device)
+StorageService (JSON serialization to shared_preferences)
    ↓
-UI Rebuild via ListenableBuilder
+UI Rebuild via ListenableBuilder or setState()
    ↓
 Display Updated Data
 ```
@@ -397,8 +413,14 @@ Display Updated Data
 
 #### `UserService().applyDiscount(percentage)`
 - Validates and applies a coupon code reduction percentage.
-- Saves the coupon session securely.
-- Automatically pushes a success/failure message to `NotificationService`.
+- Saves the coupon session securely via `StorageService`.
+- Automatically pushes a success/failure notification.
+
+#### `UserService().updateProfile(username, email)`
+- Updates current user metadata and pushes to persistent storage.
+
+#### `UserService().deleteAccount()`
+- Completely wipes the current user session and account data.
 
 #### `CartService().getDiscountedTotal()`
 - Calculates total from all basket items dynamically.
@@ -502,17 +524,18 @@ dependencies:
 
 ## 📸 File Details
 
-### Pages (10 files)
+### Pages (11 files)
 - **home_page.dart** (173 lines) - Main shopping interface
 - **login_page.dart** (180 lines) - User authentication
 - **register_page.dart** (185 lines) - New user signup
 - **basket_page.dart** (225 lines) - Shopping cart with checkout
-- **account_page.dart** (135 lines) - User dashboard
+- **account_page.dart** (213 lines) - User dashboard with list layout
 - **product_item_page.dart** (125 lines) - Product details
-- **change_password_page.dart** (170 lines) - Password management
+- **edit_account_page.dart** (223 lines) - Integrated profile & password edit
 - **orders_page.dart** (95 lines) - Order history
 - **discount_page.dart** (95 lines) - Coupon entry
 - **layout_page.dart** (95 lines) - Main navigation container
+- **delete_account_dialog.dart** (100 lines) - Security confirmation
 
 ### Widgets (13 files)
 - **Custom Components**: 5 reusable custom widgets
@@ -625,10 +648,10 @@ For issues, questions, or suggestions:
 
 ## 📊 Project Statistics
 
-- **Total Files**: 35
-- **Lines of Code**: ~3,800+
-- **Pages**: 11
-- **Custom Widgets**: 13
+- **Total Files**: 38
+- **Lines of Code**: ~4,200+
+- **Pages**: 12
+- **Custom Widgets**: 14
 - **Services**: 5
 - **Products Available**: 15
 - **Categories**: 10
