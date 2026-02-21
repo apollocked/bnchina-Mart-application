@@ -43,10 +43,12 @@ class UserService {
     _currentUser["username"] = username;
     _currentUser["password"] = password;
     _save();
+    _storage.setLoggedIn(true);
   }
 
   void logout() {
     clearDiscount();
+    _storage.setLoggedIn(false);
   }
 
   void updateProfile(String username, String email) {
@@ -68,6 +70,7 @@ class UserService {
       "discount": 0,
     };
     _storage.clearAll();
+    _storage.setLoggedIn(false);
   }
 
   void applyDiscount(int discountPercentage) {

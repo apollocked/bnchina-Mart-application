@@ -41,6 +41,6 @@ class MiniMartApp extends StatelessWidget {
           useMaterial3: true,
           scaffoldBackgroundColor: backgroundColor,
         ),
-        home: LayoutPage());
+        home: StorageService().isLoggedIn ? LayoutPage() : LoginPage());
   }
 }

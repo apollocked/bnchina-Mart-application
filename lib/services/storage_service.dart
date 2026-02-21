@@ -52,6 +52,12 @@ class StorageService {
 
   // --- Simple types ---
 
+  bool get isLoggedIn => _prefs.getBool('isLoggedIn') ?? false;
+
+  Future<void> setLoggedIn(bool value) async {
+    await _prefs.setBool('isLoggedIn', value);
+  }
+
   Future<void> clearAll() async {
     await _prefs.clear();
   }

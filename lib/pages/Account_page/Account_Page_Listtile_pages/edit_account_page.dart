@@ -168,8 +168,9 @@ class _EditAccountPageState extends State<EditAccountPage> {
                         ),
                         validator: validator ??
                             (v) {
-                              if (v == null || v.isEmpty)
+                              if (v == null || v.isEmpty) {
                                 return "$label is required";
+                              }
                               return null;
                             },
                       ),
@@ -223,8 +224,9 @@ class _EditAccountPageState extends State<EditAccountPage> {
                             ),
                           ),
                           validator: (v) {
-                            if (v != controller.text)
+                            if (v != controller.text) {
                               return "Passwords do not match";
+                            }
                             return null;
                           },
                         ),
