@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
     bool isLogin = false;
     for (var element in accounts) {
       if (element['email'] == email && element['password'] == password) {
-        UserService().login(email!, password!);
+        UserService().login(email!, password!, element['username']);
 
         isLogin = true;
         break;

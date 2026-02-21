@@ -3,6 +3,7 @@ import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/discount
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/notifications_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/signout_massege.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/delete_account_dialog.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/services/user_service.dart';
@@ -176,6 +177,15 @@ class _AccountpageState extends State<Accountpage> {
             ontap: () {
               showDialog(
                   context: context, builder: (context) => SignoutMassege());
+            },
+          ),
+          CustomTile(
+            text: "Delete Account",
+            icon: Icon(Icons.delete_outline, color: errorColor),
+            ontap: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => const DeleteAccountDialog());
             },
           ),
           const SizedBox(height: 16),

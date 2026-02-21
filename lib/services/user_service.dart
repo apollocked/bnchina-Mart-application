@@ -37,10 +37,10 @@ class UserService {
     _storage.saveMap(_userKey, _currentUser);
   }
 
-  void login(String email, String password) {
+  void login(String email, String password, String username) {
     // Dummy login
     _currentUser["email"] = email;
-    _currentUser["username"] = email.split("@").first;
+    _currentUser["username"] = username;
     _currentUser["password"] = password;
     _save();
   }
@@ -52,6 +52,16 @@ class UserService {
   void updatePassword(String newPassword) {
     _currentUser["password"] = newPassword;
     _save();
+  }
+
+  void deleteAccount() {
+    _currentUser = {
+      "username": "Guest",
+      "email": "guest@minimart.com",
+      "password": "none",
+      "discount": 0,
+    };
+    _storage.clearAll();
   }
 
   void applyDiscount(int discountPercentage) {
