@@ -49,6 +49,12 @@ class UserService {
     clearDiscount();
   }
 
+  void updateProfile(String username, String email) {
+    _currentUser["username"] = username;
+    _currentUser["email"] = email;
+    _save();
+  }
+
   void updatePassword(String newPassword) {
     _currentUser["password"] = newPassword;
     _save();

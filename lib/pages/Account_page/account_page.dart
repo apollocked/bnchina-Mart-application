@@ -1,4 +1,5 @@
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/change_password_page.dart';
+import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/edit_account_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/discount_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/notifications_page.dart';
 import 'package:minimart/pages/Account_page/Account_Page_Listtile_pages/orders_page.dart';
@@ -118,6 +119,24 @@ class _AccountpageState extends State<Accountpage> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+                IconButton(
+                  onPressed: () async {
+                    final updated = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EditAccountPage(),
+                      ),
+                    );
+                    if (updated == true) {
+                      setState(() {});
+                    }
+                  },
+                  icon: Icon(
+                    Icons.edit_note_rounded,
+                    color: primaryColor,
+                    size: 28,
                   ),
                 ),
               ],
