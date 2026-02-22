@@ -15,7 +15,20 @@ class _ProfileImagePickerPageState extends State<ProfileImagePickerPage> {
   final List<String> avatars = [
     avatarBoy,
     avatarGirl,
-    // Add more if available in assets
+    avatarArabMan,
+    avatarGeneric,
+    avatarBusinessman,
+    avatarDaughter,
+    avatarDoctor,
+    avatarGirl1,
+    avatarGirl2,
+    avatarMan1,
+    avatarNerd,
+    avatarProfessional,
+    avatarWelder,
+    avatarWoman1,
+    avatarWoman2,
+    avatarWoman3,
   ];
 
   final ImagePicker _picker = ImagePicker();

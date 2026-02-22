@@ -52,122 +52,125 @@ class _AccountpageState extends State<Accountpage> {
           const SizedBox(height: 10),
 
           // ── Profile Header Card ─────────────────────────────────────────
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xff0A2436), Color(0xff1A3B45)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              borderRadius: BorderRadius.circular(20),
-              border: Border.all(
-                color: primaryColor.withOpacity(0.2),
-                width: 1,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
-                  blurRadius: 16,
-                  offset: const Offset(0, 6),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                // Avatar with glow ring
-                Container(
-                  padding: const EdgeInsets.all(3),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    gradient: primaryGradient,
-                    boxShadow: [
-                      BoxShadow(
-                        color: primaryColor.withOpacity(0.4),
-                        blurRadius: 12,
-                        spreadRadius: 2,
-                      ),
-                    ],
+          ListenableBuilder(
+            listenable: UserService(),
+            builder: (context, child) {
+              final user = UserService().currentUser;
+              return Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xff0A2436), Color(0xff1A3B45)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  child: CircleAvatar(
-                    backgroundImage: _getProfileImage(),
-                    radius: 40,
-                    backgroundColor: surfaceColor,
-                    child: _getProfileImage() == null
-                        ? Icon(Icons.person, size: 45, color: primaryColor)
-                        : null,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: primaryColor.withOpacity(0.2),
+                    width: 1,
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
                 ),
-                const SizedBox(width: 12),
-                // Name + email
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            UserService().currentUser["username"]?.toString() ??
-                                "Guest",
-                            style: TextStyle(
-                                color: textColor,
-                                fontSize: 20,
-                                fontFamily: "Poppins",
-                                fontWeight: FontWeight.bold),
+                child: Row(
+                  children: [
+                    // Avatar with glow ring
+                    Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        gradient: primaryGradient,
+                        boxShadow: [
+                          BoxShadow(
+                            color: primaryColor.withOpacity(0.4),
+                            blurRadius: 12,
+                            spreadRadius: 2,
                           ),
-                          const SizedBox(height: 4),
-                          if (UserService().currentUser["email"] != null)
-                            Text(
-                              UserService().currentUser["email"],
-                              style: TextStyle(
-                                color: subTextColor,
-                                fontSize: 13,
+                        ],
+                      ),
+                      child: CircleAvatar(
+                        backgroundImage: _getProfileImage(),
+                        radius: 40,
+                        backgroundColor: surfaceColor,
+                        child: _getProfileImage() == null
+                            ? Icon(Icons.person, size: 45, color: primaryColor)
+                            : null,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    // Name + email
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                user["username"]?.toString() ?? "Guest",
+                                style: TextStyle(
+                                    color: textColor,
+                                    fontSize: 20,
+                                    fontFamily: "Poppins",
+                                    fontWeight: FontWeight.bold),
                               ),
-                            ),
-                          const SizedBox(height: 8),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 4),
-                            decoration: BoxDecoration(
-                              gradient: primaryGradient,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Text(
-                              "Premium Member",
-                              style: TextStyle(
-                                  color: blackColor,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold),
+                              const SizedBox(height: 4),
+                              if (user["email"] != null)
+                                Text(
+                                  user["email"],
+                                  style: TextStyle(
+                                    color: subTextColor,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              const SizedBox(height: 8),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 10, vertical: 4),
+                                decoration: BoxDecoration(
+                                  gradient: primaryGradient,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: Text(
+                                  "Premium Member",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          IconButton(
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const EditAccountPage(),
+                                ),
+                              );
+                              // UserService will trigger rebuild via ListenableBuilder
+                            },
+                            icon: Icon(
+                              Icons.edit_rounded,
+                              color: primaryColor,
+                              size: 28,
                             ),
                           ),
                         ],
                       ),
-                      const Spacer(),
-                      IconButton(
-                        onPressed: () async {
-                          await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const EditAccountPage(),
-                            ),
-                          );
-                          if (mounted) {
-                            setState(() {});
-                          }
-                        },
-                        icon: Icon(
-                          Icons.edit_rounded,
-                          color: primaryColor,
-                          size: 28,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
           const SizedBox(height: 20),
 

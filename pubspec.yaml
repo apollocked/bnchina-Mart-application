@@ -39,6 +39,7 @@ flutter:
     - assets/images/
     - assets/products/
     - assets/categories/
+    - assets/images/profile_Icons/
     - assets/
 
   fonts:

@@ -123,17 +123,22 @@ class _LayoutPageState extends State<LayoutPage> {
                           width: 1.5,
                         ),
                       ),
-                      child: CircleAvatar(
-                        maxRadius: 12,
-                        backgroundImage: _getProfileImage(),
-                        backgroundColor: surfaceColor,
-                        child: _getProfileImage() == null
-                            ? Icon(Icons.person,
-                                size: 15,
-                                color: _selectedIndex == 2
-                                    ? primaryColor
-                                    : subTextColor)
-                            : null,
+                      child: ListenableBuilder(
+                        listenable: UserService(),
+                        builder: (context, child) {
+                          return CircleAvatar(
+                            maxRadius: 12,
+                            backgroundImage: _getProfileImage(),
+                            backgroundColor: surfaceColor,
+                            child: _getProfileImage() == null
+                                ? Icon(Icons.person,
+                                    size: 15,
+                                    color: _selectedIndex == 2
+                                        ? primaryColor
+                                        : subTextColor)
+                                : null,
+                          );
+                        },
                       ),
                     ),
                   ),
