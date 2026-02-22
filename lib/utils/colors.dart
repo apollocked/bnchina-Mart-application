@@ -42,3 +42,11 @@ const LinearGradient bannerGradient = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,
 );
+
+
+
+
+
+
+
+

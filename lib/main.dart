@@ -1,6 +1,5 @@
-// ignore: unused_import
-import 'package:minimart/pages/Authotication/login_page.dart';
-import 'package:minimart/pages/Layout_page/layout_page.dart';
+import 'package:minimart/pages/authentication/login_page.dart';
+import 'package:minimart/pages/layout/layout_page.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/services/storage_service.dart';
 import 'package:minimart/services/user_service.dart';
@@ -44,3 +43,11 @@ class MiniMartApp extends StatelessWidget {
         home: StorageService().isLoggedIn ? LayoutPage() : LoginPage());
   }
 }
+
+
+
+
+
+
+
+

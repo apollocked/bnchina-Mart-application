@@ -99,3 +99,11 @@ class CartService extends ChangeNotifier {
     return total - discountAmount;
   }
 }
+
+
+
+
+
+
+
+

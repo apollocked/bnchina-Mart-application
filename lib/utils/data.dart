@@ -23,7 +23,7 @@ void addNotification({
   });
 }
 
-List<Map<String, dynamic>> coubons = [
+List<Map<String, dynamic>> coupons = [
   {
     "code": "2314",
     "discount": 20,
@@ -285,3 +285,5 @@ List<Map<String, dynamic>> products = [
     "totalPrice": 1500,
   },
 ];
+
+
