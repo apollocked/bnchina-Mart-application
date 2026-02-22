@@ -1,20 +1,13 @@
-// ignore_for_file: deprecated_member_use, duplicate_ignore
-
+import 'dart:io';
 import 'package:minimart/pages/cart/basket_page.dart';
 import 'package:minimart/pages/account/account_page.dart';
 import 'package:minimart/pages/home/home_page.dart';
+import 'package:minimart/services/user_service.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/widgets/custom_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-int slectedpage = 0;
-List<Widget> pages = [
-  const HomePage(),
-  const BasketPage(),
-  const Accountpage(),
-];
 
 class LayoutPage extends StatefulWidget {
   const LayoutPage({super.key});
@@ -24,14 +17,39 @@ class LayoutPage extends StatefulWidget {
 }
 
 class _LayoutPageState extends State<LayoutPage> {
+  int _selectedIndex = 0;
+
+  final List<Widget> _pages = [
+    const HomePage(),
+    const BasketPage(),
+    const Accountpage(),
+  ];
+
+  ImageProvider? _getProfileImage() {
+    final user = UserService().currentUser;
+    final path = user["profileImagePath"];
+    final isCustom = user["isCustomImage"] ?? false;
+
+    if (path == null || path.isEmpty) {
+      return null;
+    }
+
+    if (isCustom) {
+      return FileImage(File(path));
+    } else {
+      return AssetImage(path);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: backgroundColor,
       appBar: customAppBar(),
-      body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: pages[slectedpage]),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: _pages,
+      ),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: surfaceColor,
@@ -53,7 +71,7 @@ class _LayoutPageState extends State<LayoutPage> {
             topRight: Radius.circular(24),
           ),
           child: BottomNavigationBar(
-            currentIndex: slectedpage,
+            currentIndex: _selectedIndex,
             backgroundColor: surfaceColor,
             showSelectedLabels: true,
             showUnselectedLabels: true,
@@ -66,7 +84,7 @@ class _LayoutPageState extends State<LayoutPage> {
             elevation: 0,
             onTap: (index) {
               setState(() {
-                slectedpage = index;
+                _selectedIndex = index;
               });
             },
             items: [
@@ -76,7 +94,7 @@ class _LayoutPageState extends State<LayoutPage> {
                     padding: const EdgeInsets.only(bottom: 4),
                     child: SvgPicture.asset(
                       homeIcon,
-                      color: slectedpage == 0 ? primaryColor : subTextColor,
+                      color: _selectedIndex == 0 ? primaryColor : subTextColor,
                       height: 22,
                     ),
                   ),
@@ -87,17 +105,36 @@ class _LayoutPageState extends State<LayoutPage> {
                     child: SvgPicture.asset(
                       basketIcon,
                       // ignore: deprecated_member_use
-                      color: slectedpage == 1 ? primaryColor : subTextColor,
+                      color: _selectedIndex == 1 ? primaryColor : subTextColor,
                       height: 22,
                     ),
                   ),
                   label: "Basket"),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                   icon: Padding(
-                    padding: EdgeInsets.only(bottom: 4),
-                    child: CircleAvatar(
-                      maxRadius: 14,
-                      backgroundImage: AssetImage(avatarBoy),
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: _selectedIndex == 2
+                              ? primaryColor
+                              : Colors.transparent,
+                          width: 1.5,
+                        ),
+                      ),
+                      child: CircleAvatar(
+                        maxRadius: 12,
+                        backgroundImage: _getProfileImage(),
+                        backgroundColor: surfaceColor,
+                        child: _getProfileImage() == null
+                            ? Icon(Icons.person,
+                                size: 15,
+                                color: _selectedIndex == 2
+                                    ? primaryColor
+                                    : subTextColor)
+                            : null,
+                      ),
                     ),
                   ),
                   label: "Account"),
@@ -108,11 +145,3 @@ class _LayoutPageState extends State<LayoutPage> {
     );
   }
 }
-
-
-
-
-
-
-
-

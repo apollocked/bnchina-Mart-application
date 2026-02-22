@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:minimart/pages/account/account_sub_pages/profile_image_picker_page.dart';
 import 'package:minimart/services/user_service.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
@@ -282,6 +284,8 @@ class _EditAccountPageState extends State<EditAccountPage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          _buildProfileHeader(context),
+          const SizedBox(height: 20),
           CustomTile(
             text: "Username: ${user["username"]}",
             icon: Icon(Icons.person_outline, color: primaryColor),
@@ -333,12 +337,79 @@ class _EditAccountPageState extends State<EditAccountPage> {
       ),
     );
   }
+
+  Widget _buildProfileHeader(BuildContext context) {
+    final user = UserService().currentUser;
+    final path = user["profileImagePath"];
+    final isCustom = user["isCustomImage"] ?? false;
+
+    ImageProvider? image;
+    if (path == null || path.isEmpty) {
+      image = null;
+    } else if (isCustom) {
+      image = FileImage(File(path));
+    } else {
+      image = AssetImage(path);
+    }
+
+    return Center(
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: primaryGradient,
+                ),
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundImage: image,
+                  backgroundColor: surfaceColor,
+                  child: image == null
+                      ? Icon(Icons.person, size: 70, color: primaryColor)
+                      : null,
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: GestureDetector(
+                  onTap: () async {
+                    final updated = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProfileImagePickerPage(),
+                      ),
+                    );
+                    if (updated == true) {
+                      setState(() {});
+                    }
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(Icons.camera_alt, color: blackColor, size: 20),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 12),
+          Text(
+            "Profile Picture",
+            style: TextStyle(
+              color: textColor,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
-
-
-
-
-
-
-
-

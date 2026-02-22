@@ -8,7 +8,7 @@ const String googleLogo = "${imagePath}googlelogo.png";
 
 // Images
 const String avatarBoy = "${imagePath}avatar-boy.jpg";
-const String avatarGirl = "${imagePath}avatar-girl.jpg";
+const String avatarGirl = "${imagePath}avatar-girl.png";
 const String avocado = "${imagePath}avocado.png";
 const String blueberry = "${imagePath}blueberry.png";
 const String lemon = "${imagePath}lemon.png";
@@ -34,11 +34,3 @@ const String lockIcon = "${iconPath}lock.svg";
 const String notificationIcon = "${iconPath}bell.svg";
 const String starIcon = "${iconPath}star.svg";
 const String signoutIcon = "${iconPath}log-out.svg";
-
-
-
-
-
-
-
-

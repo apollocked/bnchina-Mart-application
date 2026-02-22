@@ -1,4 +1,4 @@
-import 'package:minimart/pages/cart/basket_cart.dart';
+import 'package:minimart/widgets/custom_cards/basket_card.dart';
 import 'package:minimart/utils/colors.dart';
 import 'package:minimart/services/cart_service.dart';
 import 'package:minimart/services/order_service.dart';
@@ -429,11 +429,3 @@ class _BasketPageState extends State<BasketPage> {
     );
   }
 }
-
-
-
-
-
-
-
-

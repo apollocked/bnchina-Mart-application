@@ -13,6 +13,8 @@ class UserService {
     "email": "guest@minimart.com",
     "password": "none",
     "discount": 0,
+    "profileImagePath": "",
+    "isCustomImage": false,
   };
 
   Map<String, dynamic> get currentUser => _currentUser;
@@ -28,6 +30,8 @@ class UserService {
         "email": "apollo@",
         "password": "aaaaaaaa",
         "discount": 0,
+        "profileImagePath": "",
+        "isCustomImage": false,
       };
       _save();
     }
@@ -62,12 +66,20 @@ class UserService {
     _save();
   }
 
+  void updateProfileImage({required String path, required bool isCustom}) {
+    _currentUser["profileImagePath"] = path;
+    _currentUser["isCustomImage"] = isCustom;
+    _save();
+  }
+
   void deleteAccount() {
     _currentUser = {
       "username": "Guest",
       "email": "guest@minimart.com",
       "password": "none",
       "discount": 0,
+      "profileImagePath": "",
+      "isCustomImage": false,
     };
     _storage.clearAll();
     _storage.setLoggedIn(false);
@@ -83,11 +95,3 @@ class UserService {
     _save();
   }
 }
-
-
-
-
-
-
-
-

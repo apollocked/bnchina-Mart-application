@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:minimart/pages/authentication/register_page.dart';
+import 'package:minimart/pages/authentication/login_page.dart';
 import 'package:minimart/services/user_service.dart';
 
-class SignoutMassege extends StatefulWidget {
-  const SignoutMassege({super.key});
+class SignoutMessage extends StatefulWidget {
+  const SignoutMessage({super.key});
 
   @override
-  State<SignoutMassege> createState() => _SignoutMassegeState();
+  State<SignoutMessage> createState() => _SignoutMessageState();
 }
 
-class _SignoutMassegeState extends State<SignoutMassege> {
+class _SignoutMessageState extends State<SignoutMessage> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -24,9 +24,10 @@ class _SignoutMassegeState extends State<SignoutMassege> {
           onPressed: () {
             UserService().logout();
             Navigator.pop(context); // Close dialog
-            Navigator.pushReplacement(
+            Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => SignUpPage()),
+              MaterialPageRoute(builder: (context) => const LoginPage()),
+              (route) => false,
             );
           },
           child: const Text("Sign Out", style: TextStyle(color: Colors.red)),
@@ -35,11 +36,3 @@ class _SignoutMassegeState extends State<SignoutMassege> {
     );
   }
 }
-
-
-
-
-
-
-
-

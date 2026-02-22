@@ -1,8 +1,9 @@
+import 'dart:io';
 import 'package:minimart/pages/account/account_sub_pages/edit_account_page.dart';
 import 'package:minimart/pages/account/account_sub_pages/discount_page.dart';
 import 'package:minimart/pages/account/account_sub_pages/notifications_page.dart';
 import 'package:minimart/pages/account/account_sub_pages/orders_page.dart';
-import 'package:minimart/pages/account/account_sub_pages/signout_massege.dart';
+import 'package:minimart/pages/account/account_sub_pages/signout_message.dart';
 import 'package:minimart/pages/account/account_sub_pages/delete_account_dialog.dart';
 import 'package:minimart/utils/assets.dart';
 import 'package:minimart/utils/colors.dart';
@@ -21,6 +22,23 @@ class Accountpage extends StatefulWidget {
 class _AccountpageState extends State<Accountpage> {
   Future<void> _refreshUserData(BuildContext context) async {
     await Future.delayed(const Duration(seconds: 1));
+    if (mounted) setState(() {});
+  }
+
+  ImageProvider? _getProfileImage() {
+    final user = UserService().currentUser;
+    final path = user["profileImagePath"];
+    final isCustom = user["isCustomImage"] ?? false;
+
+    if (path == null || path.isEmpty) {
+      return null;
+    }
+
+    if (isCustom) {
+      return FileImage(File(path));
+    } else {
+      return AssetImage(path);
+    }
   }
 
   @override
@@ -72,9 +90,13 @@ class _AccountpageState extends State<Accountpage> {
                       ),
                     ],
                   ),
-                  child: const CircleAvatar(
-                    backgroundImage: AssetImage(avatarBoy),
+                  child: CircleAvatar(
+                    backgroundImage: _getProfileImage(),
                     radius: 40,
+                    backgroundColor: surfaceColor,
+                    child: _getProfileImage() == null
+                        ? Icon(Icons.person, size: 45, color: primaryColor)
+                        : null,
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -125,13 +147,13 @@ class _AccountpageState extends State<Accountpage> {
                       const Spacer(),
                       IconButton(
                         onPressed: () async {
-                          final updated = await Navigator.push(
+                          await Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) => const EditAccountPage(),
                             ),
                           );
-                          if (updated == true) {
+                          if (mounted) {
                             setState(() {});
                           }
                         },
@@ -192,7 +214,8 @@ class _AccountpageState extends State<Accountpage> {
             icon: SvgPicture.asset(signoutIcon, color: errorColor),
             ontap: () {
               showDialog(
-                  context: context, builder: (context) => SignoutMassege());
+                  context: context,
+                  builder: (context) => const SignoutMessage());
             },
           ),
           CustomTile(
@@ -210,11 +233,3 @@ class _AccountpageState extends State<Accountpage> {
     );
   }
 }
-
-
-
-
-
-
-
-
