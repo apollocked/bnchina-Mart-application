@@ -33,7 +33,7 @@ class OrderService {
 
     _orders.insert(0, {
       "OrderID": shortid.generate(),
-      "date": DateFormat.yMd().format(DateTime.now()),
+      "date": DateFormat.yMMMMd().add_jm().format(DateTime.now()),
       "TotalPrice": finalTotal.toStringAsFixed(2),
       "Data": basketCopy,
     });
@@ -46,11 +46,3 @@ class OrderService {
     _save();
   }
 }
-
-
-
-
-
-
-
-

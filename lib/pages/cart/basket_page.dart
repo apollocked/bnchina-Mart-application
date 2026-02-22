@@ -54,6 +54,39 @@ class _BasketPageState extends State<BasketPage> {
     });
   }
 
+  void _showClearConfirmation() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: surfaceColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text(
+          "Clear Basket?",
+          style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
+        ),
+        content: Text(
+          "Are you sure you want to remove all items from your basket?",
+          style: TextStyle(color: subTextColor),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text("Cancel", style: TextStyle(color: subTextColor)),
+          ),
+          TextButton(
+            onPressed: () {
+              CartService().clearCart();
+              Navigator.pop(context);
+              CustomSnackbar(
+                  primaryColor, context, "Basket cleared successfully");
+            },
+            child: Text("Clear All", style: TextStyle(color: errorColor)),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListenableBuilder(
@@ -62,6 +95,35 @@ class _BasketPageState extends State<BasketPage> {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (CartService().basketItems.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 12, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Your Items (${CartService().basketItems.length})",
+                      style: TextStyle(
+                        color: textColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                    TextButton.icon(
+                      onPressed: _showClearConfirmation,
+                      icon: Icon(Icons.delete_sweep_outlined,
+                          color: errorColor, size: 18),
+                      label: Text(
+                        "Clear items",
+                        style: TextStyle(
+                            color: errorColor,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             Expanded(
               child: CartService().basketItems.isNotEmpty
                   ? ListView.builder(
