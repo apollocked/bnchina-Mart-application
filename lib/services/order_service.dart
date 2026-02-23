@@ -8,14 +8,25 @@ class OrderService {
   OrderService._internal();
 
   final StorageService _storage = StorageService();
-  final String _ordersKey = 'order_history';
+  String _ordersKey = 'order_history';
 
   List<Map<String, dynamic>> _orders = [];
 
   List<Map<String, dynamic>> get orders => _orders;
 
   void init() {
+    // Basic init if needed, though refresh() usually handles it
     _orders = _storage.getList(_ordersKey);
+  }
+
+  void refresh(String email) {
+    _ordersKey = 'order_history_$email';
+    _orders = _storage.getList(_ordersKey);
+  }
+
+  void clearLocal() {
+    _ordersKey = 'order_history';
+    _orders = [];
   }
 
   void _save() {

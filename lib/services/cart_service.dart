@@ -7,7 +7,7 @@ class CartService extends ChangeNotifier {
   CartService._internal();
 
   final StorageService _storage = StorageService();
-  final String _cartKey = 'basket_items';
+  String _cartKey = 'basket_items';
 
   List<Map<String, dynamic>> _basketItems = [];
 
@@ -16,6 +16,18 @@ class CartService extends ChangeNotifier {
 
   void init() {
     _basketItems = _storage.getList(_cartKey);
+  }
+
+  void refresh(String email) {
+    _cartKey = 'basket_items_$email';
+    _basketItems = _storage.getList(_cartKey);
+    notifyListeners();
+  }
+
+  void clearLocal() {
+    _cartKey = 'basket_items';
+    _basketItems = [];
+    notifyListeners();
   }
 
   void _save() {
@@ -99,11 +111,3 @@ class CartService extends ChangeNotifier {
     return total - discountAmount;
   }
 }
-
-
-
-
-
-
-
-

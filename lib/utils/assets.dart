@@ -7,11 +7,10 @@ const String appLogo = "${iconPath}minimart.jpg";
 const String googleLogo = "${imagePath}googlelogo.png";
 
 // Images
-const String avatarBoy = "${imagePath}avatar-boy.jpg";
-const String avatarGirl = "${imagePath}avatar-girl.png";
 
 // Profile Icons
 const String profileIconsPath = "${imagePath}profile_Icons/";
+const String avatarBoy = "${profileIconsPath}avatar-boy.jpg";
 const String avatarArabMan = "${profileIconsPath}arab-man.png";
 const String avatarGeneric = "${profileIconsPath}avatar.png";
 const String avatarBusinessman = "${profileIconsPath}businessman.png";

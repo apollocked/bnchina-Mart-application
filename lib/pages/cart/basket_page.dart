@@ -114,7 +114,7 @@ class _BasketPageState extends State<BasketPage> {
                       icon: Icon(Icons.delete_sweep_outlined,
                           color: errorColor, size: 18),
                       label: Text(
-                        "Clear items",
+                        "Clear Basket",
                         style: TextStyle(
                             color: errorColor,
                             fontSize: 12,

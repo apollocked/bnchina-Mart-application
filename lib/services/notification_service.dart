@@ -6,7 +6,7 @@ class NotificationService {
   NotificationService._internal();
 
   final StorageService _storage = StorageService();
-  final String _notifKey = 'user_notifications';
+  String _notifKey = 'user_notifications';
 
   List<Map<String, dynamic>> _notifications = [];
 
@@ -16,6 +16,20 @@ class NotificationService {
       _notifications.where((n) => n["isRead"] == false).length;
 
   void init() {
+    _load();
+  }
+
+  void refresh(String email) {
+    _notifKey = 'user_notifications_$email';
+    _load();
+  }
+
+  void clearLocal() {
+    _notifKey = 'user_notifications';
+    _notifications = [];
+  }
+
+  void _load() {
     // Read from storage and parse the 'time' strings back to DateTime
     final List<Map<String, dynamic>> raw = _storage.getList(_notifKey);
     _notifications = raw.map((n) {
@@ -81,11 +95,3 @@ class NotificationService {
     _save();
   }
 }
-
-
-
-
-
-
-
-

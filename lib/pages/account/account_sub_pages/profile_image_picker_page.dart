@@ -14,7 +14,6 @@ class ProfileImagePickerPage extends StatefulWidget {
 class _ProfileImagePickerPageState extends State<ProfileImagePickerPage> {
   final List<String> avatars = [
     avatarBoy,
-    avatarGirl,
     avatarArabMan,
     avatarGeneric,
     avatarBusinessman,
