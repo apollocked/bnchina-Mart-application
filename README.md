@@ -11,21 +11,22 @@ Mini Mart is a sophisticated, feature-rich mobile e-commerce application built w
 ## ✨ Core Features
 
 ### 🔐 Secure Authentication & Identity
-- **Full Auth Flow** - Robust registration and login systems with real-time validation.
-- **Session Persistence** - Automatic user session management via encrypted local storage.
-- **Profile Security** - Secure password update workflows and secondary confirmation for account deletion.
-- **Dynamic Avatars** - Custom profile photo uploads with local persistence.
+- **Full Auth Flow** - Robust guest, registration, and login systems with real-time validation.
+- **Session Persistence** - Automatic user session management ensures you stay logged in.
+- **Data Isolation** - Industry-standard isolation for **Orders, Notifications, Coupons, and Baskets** per account.
+- **Profile Security** - Password visibility toggles, secure updates, and confirmation-based account deletion.
+- **Dynamic Avatars** - Custom profile photo registry with local persistence.
 
 ### 🏪 Discovery & Shopping
 - **Intuitive Navigation** - Category-based filtering and trending products carousels.
 - **Rich Product Detail** - Beautifully designed product pages with complete specifications.
-- **Smart Basket Management** - Real-time quantity updates, swipe-to-remove, and a dedicated "Clear Basket" functionality.
+- **Smart Basket Management** - Real-time quantity updates, swipe-to-remove, and account-specific basket persistence.
 - **Location Awareness** - Precision location tracking displayed in the primary interface.
 
 ### 🎟️ Advanced Promotions & Orders
-- **Multi-Coupon System** - Sophisticated validation logic for instant discount applications.
-- **Order Tracking** - Detailed purchase history with unique Order IDs and high-precision timestamps.
-- **Instant Notifications** - Live notification system with badge tracking for purchases and promotions.
+- **Multi-Coupon System** - Sophisticated validation logic for instant discount applications, saved per account.
+- **Order Tracking** - Detailed per-user purchase history with unique Order IDs and high-precision timestamps.
+- **Instant Notifications** - Live notification system with badge tracking for purchases and promotions, isolated by user.
 
 ---
 
@@ -47,10 +48,11 @@ Mini Mart is a sophisticated, feature-rich mobile e-commerce application built w
 The application follows a **Modular Service-Oriented Architecture** to ensure clean separation of concerns and high maintainability.
 
 ### Service Layer
-- **`UserService`**: Centralized hub for authentication, profile management, and session state.
-- **`CartService`**: Reactive state management (`ChangeNotifier`) for real-time basket synchronisation.
-- **`NotificationService`**: Orchestrates global application notifications and badge logic.
-- **`StorageService`**: High-level API for seamless JSON-to-Storage abstraction.
+- **`UserService`**: Centralized hub for auth and profile management; orchestrates cross-service synchronization on login/logout.
+- **`CartService`**: Reactive state management (`ChangeNotifier`) for account-specific basket persistence.
+- **`OrderService`**: Manages user-specific purchase histories using dynamic storage keys.
+- **`NotificationService`**: Orchestrates global application notifications and badge logic with isolated user scopes.
+- **`StorageService`**: High-level API for seamless JSON-to-Storage abstraction and multi-user data keying.
 
 ---
 
@@ -81,8 +83,8 @@ lib/
 
 1. **Clone & Navigate**
    ```bash
-   git clone https://github.com/yourusername/mini-mart.git
-   cd mini-mart
+   git clone https://github.com/apollocked/bnchina-Mart-application
+   cd bnchina-Mart-application
    ```
 
 2. **Initialize Environment**
