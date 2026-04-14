@@ -3,6 +3,7 @@ import 'package:minimart/services/storage_service.dart';
 import 'package:minimart/services/order_service.dart';
 import 'package:minimart/services/notification_service.dart';
 import 'package:minimart/services/cart_service.dart';
+import 'package:minimart/utils/assets.dart';
 
 class UserService extends ChangeNotifier {
   static final UserService _instance = UserService._internal();
@@ -16,9 +17,9 @@ class UserService extends ChangeNotifier {
   Map<String, dynamic> _currentUser = {
     "username": "Guest",
     "email": "guest@minimart.com",
-    "password": "none",
+    "password": "aaaaaaaa",
     "discount": 0,
-    "profileImagePath": "",
+    "profileImagePath": avatarBoy,
     "isCustomImage": false,
   };
 

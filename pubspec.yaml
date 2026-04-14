@@ -1,13 +1,12 @@
 name: minimart
 description: "A professional Flutter shopping application renamed to Mini Mart, built for the BnChina Academy."
 
-publish_to: 'none'
-
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ">=3.4.3 <4.0.0"
 
 dependencies:
   flutter:
@@ -19,6 +18,7 @@ dependencies:
   shortid: ^0.1.2
   shared_preferences: ^2.5.4
   image_picker: ^1.0.7
+  google_sign_in: ^6.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
