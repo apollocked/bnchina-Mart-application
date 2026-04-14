@@ -57,7 +57,7 @@ class _AccountpageState extends State<Accountpage> {
             builder: (context, child) {
               final user = UserService().currentUser;
               return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 padding: const EdgeInsets.all(15),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
@@ -80,7 +80,7 @@ class _AccountpageState extends State<Accountpage> {
                 ),
                 child: Row(
                   children: [
-                    // Avatar with glow ring
+                    // Avatar
                     Container(
                       padding: const EdgeInsets.all(3),
                       decoration: BoxDecoration(
@@ -103,68 +103,69 @@ class _AccountpageState extends State<Accountpage> {
                             : null,
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    // Name + email
+                    const SizedBox(width: 16),
+
+                    // Name + Email (Scrollable Section)
                     Expanded(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                user["username"]?.toString() ?? "Guest",
-                                style: TextStyle(
-                                    color: textColor,
-                                    fontSize: 20,
-                                    fontFamily: "Poppins",
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 4),
-                              if (user["email"] != null)
-                                Text(
-                                  user["email"],
-                                  style: TextStyle(
-                                    color: subTextColor,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              const SizedBox(height: 8),
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 4),
-                                decoration: BoxDecoration(
-                                  gradient: primaryGradient,
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Text(
-                                  "Premium Member",
-                                  style: TextStyle(
-                                      color: blackColor,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ],
+                          // This makes the username scroll horizontally
+                          SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Text(
+                              user["username"]?.toString() ?? "Guest",
+                              style: TextStyle(
+                                  color: textColor,
+                                  fontSize: 19,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.bold),
+                            ),
                           ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const EditAccountPage(),
-                                ),
-                              );
-                              // UserService will trigger rebuild via ListenableBuilder
-                            },
-                            icon: Icon(
-                              Icons.edit_rounded,
-                              color: primaryColor,
-                              size: 28,
+                          if (user["email"] != null)
+                            Text(
+                              user["email"],
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: subTextColor,
+                                fontSize: 13,
+                              ),
+                            ),
+                          const SizedBox(height: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration(
+                              gradient: primaryGradient,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              "Premium Member",
+                              style: TextStyle(
+                                  color: blackColor,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
+                      ),
+                    ),
+
+                    IconButton(
+                      onPressed: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const EditAccountPage(),
+                          ),
+                        );
+                      },
+                      icon: Icon(
+                        Icons.edit_rounded,
+                        color: primaryColor,
+                        size: 26,
                       ),
                     ),
                   ],
@@ -179,8 +180,10 @@ class _AccountpageState extends State<Accountpage> {
               text: "My Orders",
               icon: SvgPicture.asset(basketIcon, color: primaryColor),
               ontap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => OrdersPage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const OrdersPage()));
               }),
           CustomTile(
             text: "Notifications",
@@ -191,7 +194,6 @@ class _AccountpageState extends State<Accountpage> {
                 MaterialPageRoute(
                     builder: (context) => const NotificationsPage()),
               );
-              // Rebuild badge after returning from notifications page
               setState(() {});
             },
           ),
